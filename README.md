@@ -6,6 +6,7 @@ Using Godot 4.1.3
 ## Team Members
 - Frankie (Sound)
 - aqstic96 (Music)
+- Muftwin (Programmer)
 - Daek (Programmer)
 - Lucks (Programmer)
 - radzo73 (Artist)
