@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u20bnbxunfyd"
-path="res://.godot/imported/noBG-Wildling-Wallpaper 4k.png-c734c696ccf039d3bf91b4e8d545bc7a.ctex"
+path="res://.godot/imported/wildling_screen.png-ca03144831edb316fd113b4a73d9794d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/logos/noBG-Wildling-Wallpaper 4k.png"
-dest_files=["res://.godot/imported/noBG-Wildling-Wallpaper 4k.png-c734c696ccf039d3bf91b4e8d545bc7a.ctex"]
+source_file="res://assets/logos/wildling_screen.png"
+dest_files=["res://.godot/imported/wildling_screen.png-ca03144831edb316fd113b4a73d9794d.ctex"]
 
 [params]
 

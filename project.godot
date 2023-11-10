@@ -13,8 +13,12 @@ config_version=5
 config/name="Godot Wild Jam"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
-boot_splash/image="res://assets/logos/noBG-Wildling-Wallpaper 4k.png"
+boot_splash/image="res://assets/logos/wildling_screen.png"
 config/icon="res://assets/logos/icon.svg"
+
+[filesystem]
+
+import/blender/enabled=false
 
 [rendering]
 
