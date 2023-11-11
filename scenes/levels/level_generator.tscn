@@ -8,7 +8,3 @@ script = ExtResource("1_7cujd")
 current_level = NodePath("Level")
 
 [node name="Level" parent="." instance=ExtResource("2_h7yog")]
-
-[node name="TemporaryCamera" type="Camera2D" parent="."]
-position = Vector2(7047, 3844)
-zoom = Vector2(0.08, 0.08)
