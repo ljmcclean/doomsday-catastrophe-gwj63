@@ -17,6 +17,11 @@ boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
 boot_splash/image="res://assets/logos/wildling_screen.png"
 config/icon="res://assets/logos/icon.svg"
 
+[autoload]
+
+RoomTemplates="*res://scenes/levels/room_templates.tscn"
+HallTemplates="*res://scenes/levels/hall_templates.tscn"
+
 [filesystem]
 
 import/blender/enabled=false

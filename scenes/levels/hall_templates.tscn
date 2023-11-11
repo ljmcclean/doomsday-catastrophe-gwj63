@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://drp7aekvgotek"]
+
+[ext_resource type="Texture2D" uid="uid://dxow5w2clqbx2" path="res://assets/art/black_and_white.png" id="1_f6tdm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0ejc"]
+texture = ExtResource("1_f6tdm")
+texture_region_size = Vector2i(500, 500)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_s75fl"]
+tile_size = Vector2i(500, 500)
+sources/1 = SubResource("TileSetAtlasSource_d0ejc")
+
+[node name="HallTemplates" type="Node"]
+
+[node name="TestHall" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_s75fl")
+format = 2
+layer_0/tile_data = PackedInt32Array(131072, 65537, 0, 196608, 65537, 0, 262144, 65537, 0, 4, 1, 0, 65540, 1, 0, 131076, 1, 0, 196612, 1, 0, 262148, 1, 0, 1, 65537, 0, 65537, 65537, 0, 131073, 65537, 0, 196609, 1, 0, 2, 1, 0, 65538, 1, 0, 131074, 1, 0, 196610, 1, 0, 3, 1, 0, 65539, 1, 0, 131075, 1, 0, 196611, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 131078, 65537, 0, 196614, 65537, 0, 262150, 65537, 0, 327686, 65537, 0, 393222, 65537, 0, 458758, 65537, 0, 524294, 65537, 0, 327680, 65537, 0, 393216, 65537, 0, 458752, 65537, 0, 524288, 65537, 0, 327681, 1, 0, 393217, 1, 0, 458753, 1, 0, 524289, 65537, 0, 589825, 65537, 0, 655361, 65537, 0, 327682, 1, 0, 393218, 1, 0, 458754, 1, 0, 524290, 1, 0, 589826, 1, 0, 655362, 1, 0, 327683, 1, 0, 393219, 1, 0, 458755, 1, 0, 524291, 1, 0, 589827, 1, 0, 655363, 1, 0, 327684, 1, 0, 393220, 1, 0, 458756, 1, 0, 524292, 1, 0, 589828, 1, 0, 655364, 1, 0, 5, 65537, 0, 65541, 65537, 0, 131077, 65537, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 458757, 1, 0, 524293, 65537, 0, 589829, 65537, 0, 655365, 65537, 0)
