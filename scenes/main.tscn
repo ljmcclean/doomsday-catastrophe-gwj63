@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://drbov38k502ba"]
+[gd_scene load_steps=3 format=3 uid="uid://drbov38k502ba"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_p5slp"]
+[ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="2_gqfrx"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_p5slp")
+
+[node name="TemporaryCamera" type="Camera2D" parent="."]
+
+[node name="Cat" parent="." instance=ExtResource("2_gqfrx")]
+speed = 500.0
+friction = 2000.0
+acceleration = 1000.0
