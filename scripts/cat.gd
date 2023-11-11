@@ -1,5 +1,5 @@
 extends CharacterBody2D
-#Primary Programmer: Lucks
+#Primary Programmer: Daek
 
 @export var speed : float
 @export var friction : float
