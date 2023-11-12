@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/game_scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/bg_color=Color(0.0784314, 0.133333, 0.25098, 1)
 boot_splash/image="res://assets/logos/wildling_screen.png"
@@ -22,6 +22,13 @@ config/icon="res://assets/logos/icon.svg"
 RoomTemplates="*res://scenes/levels/room_templates.tscn"
 HallTemplatesHor="*res://scenes/levels/hall_templates_hor.tscn"
 HallTemplatesVer="*res://scenes/levels/hall_templates_ver.tscn"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [filesystem]
 
