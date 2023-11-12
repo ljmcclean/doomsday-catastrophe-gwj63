@@ -10,3 +10,4 @@ Using Godot 4.1.3
 - Daek (Programmer)
 - Lucks (Programmer)
 - radzo73 (Artist)
+- Krypton Knight (Artist)
