@@ -12,4 +12,5 @@ offset_bottom = 784.0
 color = Color(0.478431, 0.294118, 0.376471, 1)
 
 [node name="Cat" parent="." instance=ExtResource("2_gqfrx")]
-speed = 1000.0
+speed = 500.0
+friction = 10000.0

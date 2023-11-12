@@ -22,3 +22,9 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	global_rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI/2.0
+	
+
+
+func shoot():
+	pass
+	
