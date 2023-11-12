@@ -16,6 +16,11 @@ var halls_ver : Array
 
 var rooms_placed : Array
 
+var tiles: Dictionary = {
+	"wall" : Vector2i(0, 2),
+	"floor" : Vector2i(0, 0)
+}
+
 
 func _ready():
 	reset()
@@ -59,10 +64,22 @@ func place_halls() -> void:
 	for room_coords in rooms_placed:
 		if room_coords + Vector2i(room_size.x + hall_size.y, 0) in rooms_placed:
 			generate_hall(room_coords, "horizontal", "left")
+		else:
+			for z in range(3):
+				current_level.set_cell(0, Vector2i(room_coords.x+22, room_coords.y+6+z), 0, tiles.wall)
 		if room_coords + Vector2i(0, room_size.y + hall_size.y) in rooms_placed:
 			generate_hall(room_coords, "vertical", "none")
+		else:
+			for z in range(3):
+				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y+14), 0, tiles.wall)
+		if !room_coords - Vector2i(0, room_size.y + hall_size.y) in rooms_placed:
+			for z in range(3):
+				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y), 0, tiles.wall)
 		if room_coords - Vector2i(room_size.x + hall_size.y, 0) in rooms_placed:
 			generate_hall(room_coords, "horizontal", "right")
+		else:
+			for z in range(3):
+				current_level.set_cell(0, Vector2i(room_coords.x, room_coords.y+6+z), 0, tiles.wall)
 
 
 func generate_room(coords : Vector2i) -> void:
