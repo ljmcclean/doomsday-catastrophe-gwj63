@@ -1,19 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://ddc1jq7syotkb"]
+[gd_scene load_steps=14 format=3 uid="uid://ddc1jq7syotkb"]
 
-[ext_resource type="Script" path="res://scripts/cat.gd" id="1_l617e"]
+[ext_resource type="Script" path="res://scripts/player/cat.gd" id="1_ogxmu"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/player_data.tres" id="2_hlj2i"]
 [ext_resource type="Texture2D" uid="uid://bc4ove0vyqjv4" path="res://assets/art/shooter.png" id="2_k80p0"]
-[ext_resource type="AudioStream" uid="uid://ctx3wijuhslrc" path="res://assets/sfx/shotgun_shot1.wav" id="3_0nmy3"]
+[ext_resource type="Script" path="res://scripts/player/walking_sound.gd" id="5_a2mje"]
 [ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/gun.tscn" id="5_l8k25"]
+[ext_resource type="AudioStream" uid="uid://b6iliqmytsesj" path="res://assets/audio/walking_sounds/Cat_Foostep1.wav" id="6_ei4aj"]
+[ext_resource type="AudioStream" uid="uid://bhfmh48s031cb" path="res://assets/audio/walking_sounds/Cat_Foostep2.wav" id="7_igkm0"]
+[ext_resource type="AudioStream" uid="uid://ck4oejjhenpr" path="res://assets/audio/walking_sounds/Cat_Foostep3.wav" id="8_7qcpb"]
+[ext_resource type="AudioStream" uid="uid://bfs81s0eflk0c" path="res://assets/audio/walking_sounds/Cat_Foostep4.wav" id="9_u27n2"]
+[ext_resource type="AudioStream" uid="uid://0ph1jf2bkng0" path="res://assets/audio/walking_sounds/Cat_Foostep5.wav" id="10_7do8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gojx1"]
 size = Vector2(3.92308, 4.92308)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7jyjg"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8mxdj"]
+random_pitch = 1.3
+random_volume_offset_db = 1.1
+
 [node name="Cat" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_l617e")
+script = ExtResource("1_ogxmu")
 speed = 100.0
 friction = 3000.0
 acceleration = 500.0
@@ -31,10 +40,6 @@ shape = SubResource("RectangleShape2D_gojx1")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.75, 1.75)
 
-[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_0nmy3")
-bus = &"SFX"
-
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -45,5 +50,11 @@ shape = SubResource("CircleShape2D_7jyjg")
 position = Vector2(2, -20)
 rotation = 1.5708
 scale = Vector2(0.01, 0.01)
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8mxdj")
+volume_db = 2.0
+script = ExtResource("5_a2mje")
+walking_sounds = [ExtResource("6_ei4aj"), ExtResource("7_igkm0"), ExtResource("8_7qcpb"), ExtResource("9_u27n2"), ExtResource("10_7do8r")]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var player_data : Resource
 
 @onready var gun = $Gun
+@onready var walking_sound = $WalkingSound
 
 
 func _ready():
@@ -27,6 +28,10 @@ func move(delta):
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
 	direction = direction.normalized()
+	if !walking_sound.playing and direction != Vector2.ZERO:
+		walking_sound.play()
+	elif direction == Vector2.ZERO:
+		walking_sound.stop()
 	
 	var target_velocity: Vector2 = direction * speed
 #applies friction multiplier rather than acceleration if attempting to change direction of motion
