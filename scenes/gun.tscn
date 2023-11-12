@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd6fa78higv63"]
+
+[ext_resource type="Texture2D" uid="uid://dxow5w2clqbx2" path="res://assets/art/black_and_white.png" id="1_561jj"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_g7b3h"]
+
+[node name="Gun" type="Sprite2D"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_561jj")
+script = ExtResource("1_g7b3h")

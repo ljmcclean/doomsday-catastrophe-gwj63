@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/player_data.tres" id="2_hlj2i"]
 [ext_resource type="Texture2D" uid="uid://bc4ove0vyqjv4" path="res://assets/art/shooter.png" id="2_k80p0"]
 [ext_resource type="AudioStream" uid="uid://ctx3wijuhslrc" path="res://assets/sfx/shotgun_shot1.wav" id="3_0nmy3"]
-[ext_resource type="Texture2D" uid="uid://b8hyvo1cpeq87" path="res://assets/art/blue.png" id="4_q445y"]
+[ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/gun.tscn" id="5_l8k25"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gojx1"]
 size = Vector2(3.92308, 4.92308)
@@ -35,19 +35,15 @@ zoom = Vector2(1.75, 1.75)
 stream = ExtResource("3_0nmy3")
 bus = &"SFX"
 
-[node name="Bullet" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(1, -36)
-scale = Vector2(0.178846, 0.0949074)
-texture = ExtResource("4_q445y")
-
-[node name="RayCast2D" type="RayCast2D" parent="Bullet"]
-target_position = Vector2(0, -1000)
-
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 scale = Vector2(2.1, 2.1)
 shape = SubResource("CircleShape2D_7jyjg")
+
+[node name="Gun" parent="." instance=ExtResource("5_l8k25")]
+position = Vector2(2, -20)
+rotation = 1.5708
+scale = Vector2(0.01, 0.01)
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

@@ -10,5 +10,5 @@ current_level = NodePath("Level")
 [node name="Level" parent="." instance=ExtResource("2_h7yog")]
 
 [node name="TemporaryCamera" type="Camera2D" parent="."]
-position = Vector2(-128, -1280)
+position = Vector2(272, -1356)
 zoom = Vector2(0.2, 0.2)

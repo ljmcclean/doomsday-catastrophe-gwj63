@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @export var player_data : Resource
 
+@onready var gun = $Gun
+
 
 func _ready():
 	respawn()
@@ -36,8 +38,9 @@ func move(delta):
 	global_rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI/2.0
 
 
-func shoot():
-	pass
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		gun.fire_bullet()
 
 
 func _on_hurt_box_area_entered(area):
