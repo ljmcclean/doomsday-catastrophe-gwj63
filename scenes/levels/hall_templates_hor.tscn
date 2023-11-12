@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://drp7aekvgotek"]
+
+[ext_resource type="Texture2D" uid="uid://bojqq1lkbo113" path="res://assets/art/temp_tiles.png" id="1_q27o4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vf7dq"]
+texture = ExtResource("1_q27o4")
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lhqn7"]
+sources/0 = SubResource("TileSetAtlasSource_vf7dq")
+
+[node name="HallTemplatesHor" type="Node"]
+
+[node name="TestHall" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_lhqn7")
+format = 2
+layer_0/tile_data = PackedInt32Array(131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 65537, 0, 2, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 131078, 0, 0, 196614, 0, 0, 262150, 0, 0, 393216, 0, 2, 131077, 0, 0, 196613, 0, 0, 262149, 0, 0, 65538, 0, 2, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 131075, 0, 0, 196611, 0, 0, 262147, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 65536, 0, 2, 131079, 0, 0, 131080, 0, 0, 65544, 0, 2, 65545, 0, 2, 65546, 0, 2, 393224, 0, 2, 196615, 0, 0, 262151, 0, 0, 196616, 0, 0, 262152, 0, 0, 196617, 0, 0, 262153, 0, 0, 327689, 0, 2, 196618, 0, 0, 262154, 0, 0, 327690, 0, 2, 131081, 0, 0, 393225, 0, 2, 131082, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 2, 65543, 0, 2, 327680, 0, 2, 327681, 0, 2, 327682, 0, 2, 327683, 0, 2, 327684, 0, 2, 327685, 0, 0, 393220, 0, 2, 393221, 0, 2, 393222, 0, 2, 393223, 0, 2, 2, 0, 2, 3, 0, 2, 4, 0, 2, 5, 0, 2, 6, 0, 2, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0)

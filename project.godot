@@ -20,7 +20,8 @@ config/icon="res://assets/logos/icon.svg"
 [autoload]
 
 RoomTemplates="*res://scenes/levels/room_templates.tscn"
-HallTemplates="*res://scenes/levels/hall_templates.tscn"
+HallTemplatesHor="*res://scenes/levels/hall_templates_hor.tscn"
+HallTemplatesVer="*res://scenes/levels/hall_templates_ver.tscn"
 
 [filesystem]
 
