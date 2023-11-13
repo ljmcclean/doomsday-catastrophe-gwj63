@@ -31,6 +31,10 @@ func _ready():
 	for hall in hall_templates_ver.get_children():
 		halls_ver.append(hall)
 	generate_level()
+	var tween = get_tree().create_tween()
+	$Music.play()
+	tween.tween_property($Music, "volume_db", 0, .8)
+	
 
 
 func generate_level() -> void:
