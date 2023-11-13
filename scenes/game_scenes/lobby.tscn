@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
 [ext_resource type="Texture2D" uid="uid://bojqq1lkbo113" path="res://assets/art/temp_tiles.png" id="2_yhfmx"]
 [ext_resource type="PackedScene" uid="uid://b53dgx1r8uhl1" path="res://scenes/skeleton.tscn" id="4_axhau"]
+[ext_resource type="PackedScene" uid="uid://bcuw32fhd4utn" path="res://scenes/mob.tscn" id="4_k6pqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sakbm"]
 texture = ExtResource("2_yhfmx")
@@ -52,5 +53,7 @@ position = Vector2(504, 195)
 
 [node name="skeleton3" parent="." instance=ExtResource("4_axhau")]
 position = Vector2(158, 89)
+[node name="Mob" parent="." instance=ExtResource("4_k6pqg")]
+position = Vector2(655, 78)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

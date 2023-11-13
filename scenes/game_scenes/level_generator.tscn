@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://did1apr668d8s"]
+[gd_scene load_steps=5 format=3 uid="uid://did1apr668d8s"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_generator.gd" id="1_7cujd"]
 [ext_resource type="PackedScene" uid="uid://canf5pee32ncn" path="res://scenes/levels/level.tscn" id="2_h7yog"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="4_doupq"]
+[ext_resource type="PackedScene" path="res://scenes/mob.tscn" id="4_ji8ft"]
 
 [node name="LevelGenerator" type="Node2D" node_paths=PackedStringArray("current_level")]
 script = ExtResource("1_7cujd")
@@ -12,3 +13,5 @@ current_level = NodePath("Level")
 
 [node name="Level" parent="." instance=ExtResource("2_h7yog")]
 z_index = -1
+
+[node name="Mob" parent="." instance=ExtResource("4_ji8ft")]
