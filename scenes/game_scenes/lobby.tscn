@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cly8tprr0px40"]
+[gd_scene load_steps=8 format=3 uid="uid://cly8tprr0px40"]
 
 [ext_resource type="Script" path="res://scripts/lobby.gd" id="1_klfky"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
 [ext_resource type="Texture2D" uid="uid://bojqq1lkbo113" path="res://assets/art/temp_tiles.png" id="2_yhfmx"]
+[ext_resource type="PackedScene" uid="uid://bcuw32fhd4utn" path="res://scenes/mob.tscn" id="4_k6pqg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sakbm"]
 texture = ExtResource("2_yhfmx")
@@ -42,5 +43,8 @@ position = Vector2(100, 0)
 position = Vector2(253, 168)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_2n1il")
+
+[node name="Mob" parent="." instance=ExtResource("4_k6pqg")]
+position = Vector2(100, 122)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

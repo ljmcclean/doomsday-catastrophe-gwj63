@@ -69,3 +69,7 @@ func update_player_data():
 	if player_data.health <= 0:
 		die()
 
+#Makes the player dodge to the direction of the mouse 
+func dodge():
+	pass
+
