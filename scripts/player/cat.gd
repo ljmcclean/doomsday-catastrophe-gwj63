@@ -13,6 +13,7 @@ extends CharacterBody2D
 
 func _ready():
 	respawn()
+	add_to_group("cat")
 
 
 func _physics_process(delta):
