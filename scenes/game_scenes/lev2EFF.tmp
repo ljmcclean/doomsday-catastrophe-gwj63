@@ -10,10 +10,11 @@ script = ExtResource("1_7cujd")
 current_level = NodePath("Level")
 
 [node name="Cat" parent="." instance=ExtResource("4_doupq")]
+scale = Vector2(0.65, 0.65)
 
 [node name="Level" parent="." instance=ExtResource("2_h7yog")]
 z_index = -1
 
 [node name="Enemy" parent="." instance=ExtResource("4_363h0")]
-position = Vector2(245, 146)
+position = Vector2(231, 147)
 metadata/_edit_group_ = true

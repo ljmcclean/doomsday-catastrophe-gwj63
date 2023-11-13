@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cd6fa78higv63"]
 
 [ext_resource type="Texture2D" uid="uid://dxow5w2clqbx2" path="res://assets/art/black_and_white.png" id="1_561jj"]
-[ext_resource type="Script" path="res://scripts/gun.gd" id="1_g7b3h"]
+[ext_resource type="Script" path="res://scripts/items/gun.gd" id="2_fusl5"]
 [ext_resource type="Script" path="res://assets/audio/gunshot_sounds/gunshot_sound.gd" id="3_ruheo"]
 [ext_resource type="AudioStream" uid="uid://cn08v5vm18chb" path="res://assets/audio/gunshot_sounds/Gunshot_1.wav" id="4_ogklu"]
 [ext_resource type="AudioStream" uid="uid://do74py7epsq2i" path="res://assets/audio/gunshot_sounds/Gunshot_2.wav" id="5_ddr66"]
@@ -12,10 +12,10 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8vf7o"]
 
-[node name="Gun" type="Sprite2D"]
+[node name="Gun" type="Sprite2D" groups=["gun"]]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_561jj")
-script = ExtResource("1_g7b3h")
+script = ExtResource("2_fusl5")
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8vf7o")

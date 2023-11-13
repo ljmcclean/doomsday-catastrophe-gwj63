@@ -21,6 +21,8 @@ func _physics_process(delta):
 		move(delta)
 		move_and_slide()
 	update_player_data()
+	if player_data.health <= 0:
+		die()
 
 
 func move(delta):

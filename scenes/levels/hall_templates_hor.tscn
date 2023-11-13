@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://drp7aekvgotek"]
+[gd_scene load_steps=5 format=3 uid="uid://drp7aekvgotek"]
 
 [ext_resource type="Texture2D" uid="uid://bojqq1lkbo113" path="res://assets/art/temp_tiles.png" id="1_q27o4"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6hmqy"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vf7dq"]
 texture = ExtResource("1_q27o4")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6hmqy")
 0:1/0 = 0
 0:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lhqn7"]
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_vf7dq")
 
 [node name="HallTemplatesHor" type="Node"]

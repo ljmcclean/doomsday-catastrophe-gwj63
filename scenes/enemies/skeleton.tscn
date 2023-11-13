@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b53dgx1r8uhl1"]
 
-[ext_resource type="Script" path="res://scripts/chaser.gd" id="1_cohjl"]
+[ext_resource type="Script" path="res://scripts/enemies/chaser.gd" id="1_cohjl"]
 [ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="2_vfg20"]
 
 [node name="SkeletonBody" type="CharacterBody2D"]

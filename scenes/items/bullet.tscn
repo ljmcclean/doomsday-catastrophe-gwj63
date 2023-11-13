@@ -1,15 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccktlv7tnl25j"]
 
 [ext_resource type="Texture2D" uid="uid://b8hyvo1cpeq87" path="res://assets/art/blue.png" id="1_41eu6"]
-[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_de3b6"]
+[ext_resource type="Script" path="res://scripts/items/bullet.gd" id="1_w520q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jlog"]
+radius = 20.0
+height = 60.0
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="CharacterBody2D" groups=["damage_source"]]
 z_index = 5
-script = ExtResource("1_de3b6")
+script = ExtResource("1_w520q")
 
-[node name="Area2D" type="Area2D" parent="." groups=["player_damage_source"]]
+[node name="Area2D" type="Area2D" parent="." groups=["damage_source"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.2, 0.2)

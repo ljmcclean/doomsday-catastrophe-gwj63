@@ -95,18 +95,21 @@ func generate_hall(coords : Vector2i, orientation : String, direction : String) 
 		var current_hall : TileMap = halls_hor[randi_range(0, len(halls_hor)-1)]
 		for x in hall_size.y:
 			for y in hall_size.x:
+				@warning_ignore("integer_division")
 				var cell = Vector2i(x+coords.x-hall_size.y, y+coords.y+(room_size.y/2)-(hall_size.x/2))
 				current_level.set_cell(0, cell, 0, current_hall.get_cell_atlas_coords(0, Vector2i(x, y)))
 	elif orientation == "horizontal" and direction == "left":
 		var current_hall : TileMap = halls_hor[randi_range(0, len(halls_hor)-1)]
 		for x in hall_size.y:
 			for y in hall_size.x:
+				@warning_ignore("integer_division")
 				var cell = Vector2i(x+coords.x+room_size.x, y+coords.y+(room_size.y/2)-(hall_size.x/2))
 				current_level.set_cell(0, cell, 0, current_hall.get_cell_atlas_coords(0, Vector2i(x, y)))
 	elif orientation == "vertical":
 		var current_hall : TileMap = halls_ver[randi_range(0, len(halls_ver)-1)]
 		for x in hall_size.x:
 			for y in hall_size.y:
+				@warning_ignore("integer_division")
 				var cell = Vector2i(x+coords.x+(room_size.x/2)-(hall_size.x/2), y+coords.y+room_size.y)
 				current_level.set_cell(0, cell, 0, current_hall.get_cell_atlas_coords(0, Vector2i(x, y)))
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcuw32fhd4utn"]
+[gd_scene load_steps=5 format=3 uid="uid://bj6rvx08ee61b"]
 
-[ext_resource type="Script" path="res://scripts/mob.gd" id="1_6mll4"]
+[ext_resource type="Script" path="res://scripts/enemies/mob.gd" id="1_6mll4"]
 [ext_resource type="Texture2D" uid="uid://cutlkoe688x0u" path="res://assets/art/zombie.png" id="1_ne0qq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u7lbd"]
