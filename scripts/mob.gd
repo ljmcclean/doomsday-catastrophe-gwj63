@@ -14,10 +14,12 @@ func _physics_process(delta):
 		
 
 func _on_detection_area_body_entered(body):
-	player = body
-	chase_player = true
+	if body.is_in_group("player"):
+		player = body
+		chase_player = true
 
 
 func _on_detection_area_body_exited(body):
-	player = null
-	chase_player = false
+	if body.is_in_group("player"):
+		player = null
+		chase_player = false
