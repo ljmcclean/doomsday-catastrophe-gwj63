@@ -45,6 +45,6 @@ scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_2n1il")
 
 [node name="Mob" parent="." instance=ExtResource("4_k6pqg")]
-position = Vector2(100, 122)
+position = Vector2(655, 78)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
