@@ -3,7 +3,7 @@ extends Control
 @export var player_data : Resource
 
 
-func _process(delta):
+func _process(_delta):
 	change_hearts()
 
 

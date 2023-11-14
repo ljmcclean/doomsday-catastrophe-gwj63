@@ -1,6 +1,8 @@
 extends CharacterBody2D
 #Primary Programmer: Daek/Lucks
 
+var player: bool = true
+
 @export var speed : float
 @export var friction : float
 @export var acceleration : float
@@ -18,6 +20,7 @@ func _ready():
 
 func _physics_process(delta):
 	if not player_data.is_dead:
+		aim_gun()
 		move(delta)
 		move_and_slide()
 	update_player_data()
@@ -42,8 +45,10 @@ func move(delta):
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	else:
 		velocity = velocity.move_toward(target_velocity, friction * delta)
-	
-	$Gun.global_rotation = global_position.direction_to(get_global_mouse_position()).angle() + PI
+
+
+func aim_gun():
+	$Gun.global_rotation = $Gun.global_position.direction_to(get_global_mouse_position()).angle() + PI
 
 
 func _input(event):
@@ -57,7 +62,6 @@ func _on_hurt_box_area_entered(area):
 
 
 func die():
-	position = Vector2(INF, INF)
 	respawn()
 
 

@@ -3,6 +3,9 @@ extends Sprite2D
 var bullet_scene := preload("res://scenes/items/bullet.tscn")
 
 @export var is_player: bool = false
+@export var cooldown: float = .35
+@export var bullet_speed: int = 200
+@export var spread: float = 0
 
 var can_shoot : bool = true
 
@@ -12,9 +15,10 @@ func fire_bullet():
 		var bullet = bullet_scene.instantiate()
 		if is_player:
 			bullet.is_player = true
+		bullet.speed = bullet_speed
 		get_tree().root.add_child.call_deferred(bullet)
 		bullet.global_position = global_position
-		bullet.global_rotation = global_rotation-PI/2
+		bullet.global_rotation = global_rotation-PI/2 + randf_range(-spread, spread)
 		$ShootSound.play()
 		can_shoot = false
 		$Cooldown.start()

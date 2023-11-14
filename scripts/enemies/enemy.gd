@@ -36,7 +36,7 @@ func _physics_process(delta):
 			die()
 		
 		if player_in_attack_radius:
-			gun.global_rotation = global_position.direction_to(player_data.player_position).angle() + PI
+			gun.global_rotation = gun.global_position.direction_to(player_data.player_position).angle() + PI
 
 
 func _on_attack_radius_body_entered(body):
@@ -92,3 +92,15 @@ func _on_hurt_box_area_entered(area):
 
 func _on_death_timer_timeout():
 	queue_free()
+
+
+func _on_stop_move_radius_body_entered(body):
+	if body.is_in_group("player"):
+		pathfind_timer.stop()
+		player_in_move_radius = false
+
+
+func _on_stop_move_radius_body_exited(body):
+	if body.is_in_group("player"):
+		player_in_move_radius = true
+		pathfind_timer.start()
