@@ -2,9 +2,12 @@ extends Node2D
 #Primary Programmer: Lucks
 
 @export var current_level : TileMap
-@onready var room_templates: Node = get_node("/root/RoomTemplates")
-@onready var hall_templates_hor: Node = get_node("/root/HallTemplatesHor")
-@onready var hall_templates_ver: Node = get_node("/root/HallTemplatesVer")
+@onready var room_templates: Node = preload("res://scenes/levels/room_templates.tscn").instantiate()
+@onready var hall_templates_hor: Node = preload("res://scenes/levels/hall_templates_hor.tscn").instantiate()
+@onready var hall_templates_ver: Node = preload("res://scenes/levels/hall_templates_ver.tscn").instantiate()
+
+@export var enemy_spawn_rate: float = .5
+var enemy := preload("res://scenes/enemies/enemy.tscn")
 
 @export var player_data : Resource
 
@@ -36,9 +39,6 @@ func _ready():
 	var tween = get_tree().create_tween()
 	$Music.play()
 	tween.tween_property($Music, "volume_db", 0, .8)
-	hall_templates_ver.queue_free()
-	hall_templates_hor.queue_free()
-	room_templates.queue_free()
 
 
 func generate_level() -> void:
@@ -99,7 +99,15 @@ func generate_room(coords : Vector2i, first_room : bool) -> void:
 				if data:
 					if data.get_custom_data("spawn_point"):
 						player_data.spawn_location = current_level.map_to_local(Vector2i(x, y))
-						$Cat.respawn()
+						$Cat.position = current_level.map_to_local(Vector2i(x, y))
+			else:
+				var data = current_room.get_cell_tile_data(0, Vector2i(x, y))
+				if data:
+					if data.get_custom_data("enemy_spawn_point"):
+						if randf() >= enemy_spawn_rate:
+							var new_enemy = enemy.instantiate()
+							add_child.call_deferred(new_enemy)
+							new_enemy.position = current_level.map_to_local(Vector2i(x+coords.x, y+coords.y))
 			var cell = Vector2i(x+coords.x, y+coords.y)
 			current_level.set_cell(0, cell, 1, current_room.get_cell_atlas_coords(0, Vector2i(x, y)))
 
@@ -134,3 +142,7 @@ func reset():
 	halls_ver.clear()
 	rooms_placed.clear()
 	current_level.clear()
+
+
+func _on_cat_player_died():
+	get_tree().change_scene_to_file("res://scenes/game_scenes/lobby.tscn")

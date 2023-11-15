@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 var player: bool = true
 
-@export var speed : float
 @export var friction : float
 @export var acceleration : float
 
@@ -12,9 +11,10 @@ var player: bool = true
 @onready var gun = $Gun
 @onready var walking_sound = $WalkingSound
 
+signal player_died
+
 
 func _ready():
-	respawn()
 	add_to_group("cat")
 
 
@@ -39,7 +39,7 @@ func move(delta):
 	elif direction == Vector2.ZERO:
 		walking_sound.stop()
 	
-	var target_velocity: Vector2 = direction * speed
+	var target_velocity: Vector2 = direction * player_data.speed
 #applies friction multiplier rather than acceleration if attempting to change direction of motion
 	if (direction != Vector2.ZERO) and direction.dot(velocity) > 0:
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
@@ -67,7 +67,7 @@ func die():
 
 func respawn():
 	player_data.health = 5
-	position = player_data.spawn_location
+	emit_signal("player_died")
 
 
 #updates player_data resource which can be accessed by other scripts
@@ -75,6 +75,8 @@ func update_player_data():
 	player_data.player_position = self.position
 	if player_data.health <= 0:
 		die()
+	$Gun.cooldown = player_data.fire_rate
+	$Gun.bullet_speed = player_data.bullet_speed
 
 #Makes the player dodge to the direction of the mouse 
 func dodge():

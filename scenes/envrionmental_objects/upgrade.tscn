@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://yrrgdej2dv7m"]
+
+[ext_resource type="Script" path="res://scripts/items/upgrade.gd" id="1_c3b4q"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_7hi6b"]
+[ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="3_8e4qt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_81igs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1kptl"]
+radius = 22.0907
+
+[node name="Upgrade" type="StaticBody2D"]
+script = ExtResource("1_c3b4q")
+player_data = ExtResource("2_7hi6b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_81igs")
+
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(0.8, 0.8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_1kptl")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 400
+offset_left = -52.0
+offset_top = -20.0
+offset_right = 53.0
+offset_bottom = 1.0
+theme = ExtResource("3_8e4qt")
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+scroll_active = false
+tab_size = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

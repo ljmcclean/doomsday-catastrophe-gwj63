@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var pathfind_timer := $PathfindTimer
 @onready var attack_cooldown := $AttackCooldown
 @onready var gun := $Gun
+@onready var coin := preload("res://scenes/items/coin.tscn")
 
 @export var player_data : Resource
 
@@ -91,6 +92,9 @@ func _on_hurt_box_area_entered(area):
 
 
 func _on_death_timer_timeout():
+	var dropped_coin = coin.instantiate()
+	get_tree().root.add_child(dropped_coin)
+	dropped_coin.position = position
 	queue_free()
 
 

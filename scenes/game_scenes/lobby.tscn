@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cly8tprr0px40"]
+[gd_scene load_steps=11 format=3 uid="uid://cly8tprr0px40"]
 
 [ext_resource type="Script" path="res://scripts/game/lobby.gd" id="1_klfky"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
 [ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/outdoor_tileset.tres" id="3_mq2j0"]
 [ext_resource type="AudioStream" uid="uid://hrg1l814nmy6" path="res://assets/audio/menu/Button_2.wav" id="4_7s4rg"]
+[ext_resource type="PackedScene" uid="uid://yrrgdej2dv7m" path="res://scenes/envrionmental_objects/upgrade.tscn" id="5_fnnb4"]
+[ext_resource type="Texture2D" uid="uid://d1hdxbpvigfyg" path="res://assets/art/objects/building_1.png" id="6_e5kcf"]
+[ext_resource type="Texture2D" uid="uid://cki1trcbilpjj" path="res://assets/art/objects/building_2.png" id="7_cddot"]
+[ext_resource type="Texture2D" uid="uid://dohv17qn1ruyn" path="res://assets/art/objects/building_3.png" id="8_6nvog"]
+[ext_resource type="Texture2D" uid="uid://b0366fyv0pbll" path="res://assets/art/objects/fountain.png" id="9_un3yt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2n1il"]
 size = Vector2(12.5, 16.25)
@@ -35,6 +40,34 @@ stream = ExtResource("4_7s4rg")
 [node name="LoadDelay" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="UpgradeSpeed" parent="." instance=ExtResource("5_fnnb4")]
+position = Vector2(488, 376)
+upgrade_name = "speed"
+cost = 10
+cost_increase = 5
+sprite = ExtResource("6_e5kcf")
+
+[node name="UpgradeFireRate" parent="." instance=ExtResource("5_fnnb4")]
+position = Vector2(584, 376)
+upgrade_name = "fire_rate"
+cost = 15
+cost_increase = 10
+sprite = ExtResource("7_cddot")
+
+[node name="UpgradeHealth" parent="." instance=ExtResource("5_fnnb4")]
+position = Vector2(488, 472)
+upgrade_name = "health"
+cost = 25
+cost_increase = 15
+sprite = ExtResource("8_6nvog")
+
+[node name="UpgradeBulletSpeed" parent="." instance=ExtResource("5_fnnb4")]
+position = Vector2(584, 472)
+upgrade_name = "bullet_speed"
+cost = 20
+cost_increase = 5
+sprite = ExtResource("9_un3yt")
 
 [connection signal="body_entered" from="NextArea" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]
