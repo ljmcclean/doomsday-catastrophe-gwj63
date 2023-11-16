@@ -90,3 +90,10 @@ func change_hearts():
 		$HBoxContainer/Heart3.hide()
 		$HBoxContainer/Heart2.hide()
 		$HBoxContainer/Heart1.hide()
+
+
+func _on_button_button_down():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Black, "modulate", Color(1, 1, 1, 1), .4)
+	await get_tree().create_timer(.45).timeout
+	get_tree().change_scene_to_file("res://scenes/game_scenes/help_screen.tscn")

@@ -63,6 +63,7 @@ func _on_hurt_box_area_entered(area):
 
 func die():
 	if !player_data.is_dead:
+		SaveAndLoad.save_data()
 		$Camera2D/LoadDelay.start()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Camera2D/Black, "modulate", Color(1, 1, 1, 1), .4)
@@ -71,7 +72,7 @@ func die():
 
 func respawn():
 	player_data.is_dead = false
-	player_data.health = 5
+	player_data.health = player_data.max_health
 
 
 #updates player_data resource which can be accessed by other scripts

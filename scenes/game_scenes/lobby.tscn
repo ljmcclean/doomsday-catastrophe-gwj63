@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cly8tprr0px40"]
+[gd_scene load_steps=16 format=3 uid="uid://cly8tprr0px40"]
 
 [ext_resource type="Script" path="res://scripts/game/lobby.gd" id="1_klfky"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
@@ -8,8 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://yrrgdej2dv7m" path="res://scenes/envrionmental_objects/upgrade.tscn" id="5_fnnb4"]
 [ext_resource type="Texture2D" uid="uid://d1hdxbpvigfyg" path="res://assets/art/objects/building_1.png" id="6_e5kcf"]
 [ext_resource type="Texture2D" uid="uid://cki1trcbilpjj" path="res://assets/art/objects/building_2.png" id="7_cddot"]
+[ext_resource type="Resource" uid="uid://cq0mlf5wm2v6x" path="res://resources/data/upgrade_data_speed.tres" id="7_pvc7b"]
 [ext_resource type="Texture2D" uid="uid://dohv17qn1ruyn" path="res://assets/art/objects/building_3.png" id="8_6nvog"]
+[ext_resource type="Resource" uid="uid://c4ow74vsr7o1r" path="res://resources/data/upgrade_data_fire_rate.tres" id="9_i1bre"]
 [ext_resource type="Texture2D" uid="uid://b0366fyv0pbll" path="res://assets/art/objects/fountain.png" id="9_un3yt"]
+[ext_resource type="Resource" uid="uid://bir0fbh4sq1yk" path="res://resources/data/upgrade_data_health.tres" id="11_xk6di"]
+[ext_resource type="Resource" uid="uid://btlckbi03yr6g" path="res://resources/data/upgrade_data_bullet_speed.tres" id="13_a1tei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2n1il"]
 size = Vector2(12.5, 16.25)
@@ -49,6 +53,7 @@ position = Vector2(488, 376)
 upgrade_name = "speed"
 cost = 10
 cost_increase = 5
+upgrade_data = ExtResource("7_pvc7b")
 sprite = ExtResource("6_e5kcf")
 
 [node name="UpgradeFireRate" parent="." instance=ExtResource("5_fnnb4")]
@@ -56,6 +61,7 @@ position = Vector2(584, 376)
 upgrade_name = "fire_rate"
 cost = 15
 cost_increase = 10
+upgrade_data = ExtResource("9_i1bre")
 sprite = ExtResource("7_cddot")
 
 [node name="UpgradeHealth" parent="." instance=ExtResource("5_fnnb4")]
@@ -63,6 +69,7 @@ position = Vector2(488, 472)
 upgrade_name = "health"
 cost = 25
 cost_increase = 15
+upgrade_data = ExtResource("11_xk6di")
 sprite = ExtResource("8_6nvog")
 
 [node name="UpgradeBulletSpeed" parent="." instance=ExtResource("5_fnnb4")]
@@ -70,6 +77,7 @@ position = Vector2(584, 472)
 upgrade_name = "bullet_speed"
 cost = 20
 cost_increase = 5
+upgrade_data = ExtResource("13_a1tei")
 sprite = ExtResource("9_un3yt")
 
 [connection signal="body_entered" from="NextArea" to="." method="_on_area_2d_body_entered"]

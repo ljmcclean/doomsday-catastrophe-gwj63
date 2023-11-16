@@ -1,11 +1,12 @@
 extends Resource
 
-var health: int = 5
-var speed: float = 100
-var is_dead: bool = false
-var currency: int = 0
-var fire_rate: float = .35
-var bullet_speed: int = 200
+var max_health : int
+var health : int
+var speed : float
+var is_dead : bool = false
+var currency : int
+var fire_rate : float
+var bullet_speed : int
 
 var player_position : Vector2
 var spawn_location := Vector2i(535, 425)
@@ -19,11 +20,11 @@ func upgrade(upgrade_name : String):
 	elif upgrade_name == "fire_rate":
 		fire_rate -= .05
 	elif upgrade_name == "health":
-		health += 1
+		max_health += 1
 	elif upgrade_name == "bullet_speed":
 		bullet_speed += 10
 	
-	health = clamp(health, 0, 8)
+	health = clamp(max_health, 0, 8)
 	speed = clamp(speed, 0, 180)
 	fire_rate = clamp(fire_rate, .2, .35)
 	bullet_speed = clamp(bullet_speed, 0, 400)

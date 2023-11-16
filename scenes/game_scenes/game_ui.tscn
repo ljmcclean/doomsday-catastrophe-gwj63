@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bv8xf3vnqnruk"]
+[gd_scene load_steps=6 format=3 uid="uid://bv8xf3vnqnruk"]
 
 [ext_resource type="Texture2D" uid="uid://bgjn2h2yg403u" path="res://assets/art/Heart.png" id="1_4sa6f"]
 [ext_resource type="Script" path="res://scripts/game/game_ui.gd" id="1_28bk6"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ywf7l"]
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="3_dlycj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imf7t"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -81,3 +83,23 @@ theme_override_font_sizes/normal_font_size = 150
 text = "0
 "
 scroll_active = false
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.647059)
+z_index = 500
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -120.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_dlycj")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/normal = SubResource("StyleBoxEmpty_imf7t")
+text = "?"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

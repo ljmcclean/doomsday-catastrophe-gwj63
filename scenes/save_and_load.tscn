@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm0nn5iqnwjd"]
+
+[ext_resource type="Script" path="res://scripts/save_and_load.gd" id="1_shs5i"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_1b4eg"]
+[ext_resource type="Resource" uid="uid://btlckbi03yr6g" path="res://resources/data/upgrade_data_bullet_speed.tres" id="3_jobv0"]
+[ext_resource type="Resource" uid="uid://c4ow74vsr7o1r" path="res://resources/data/upgrade_data_fire_rate.tres" id="4_fn4co"]
+[ext_resource type="Resource" uid="uid://bir0fbh4sq1yk" path="res://resources/data/upgrade_data_health.tres" id="5_e1etv"]
+[ext_resource type="Resource" uid="uid://cq0mlf5wm2v6x" path="res://resources/data/upgrade_data_speed.tres" id="6_htq1u"]
+
+[node name="SaveAndLoad" type="Node"]
+script = ExtResource("1_shs5i")
+player_data = ExtResource("2_1b4eg")
+upgrade_data_1 = ExtResource("3_jobv0")
+upgrade_data_2 = ExtResource("4_fn4co")
+upgrade_data_3 = ExtResource("5_e1etv")
+upgrade_data_4 = ExtResource("6_htq1u")

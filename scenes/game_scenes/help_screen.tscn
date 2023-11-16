@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck3msa2jkmp8x"]
+
+[ext_resource type="Script" path="res://scripts/game/help_screen.gd" id="1_t78o7"]
+[ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="2_mga8v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfyk7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dotbl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6lck"]
+
+[node name="HelpScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t78o7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0352941, 0.121569, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 28.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = ExtResource("2_mga8v")
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme = ExtResource("2_mga8v")
+theme_override_font_sizes/normal_font_size = 200
+bbcode_enabled = true
+text = "Controls"
+scroll_active = false
+
+[node name="Movement" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+text = "Movement"
+
+[node name="Up" type="TextEdit" parent="VBoxContainer/Movement"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
+text = "W"
+context_menu_enabled = false
+shortcut_keys_enabled = false
+caret_blink = true
+
+[node name="Down" type="TextEdit" parent="VBoxContainer/Movement"]
+layout_mode = 2
+offset_left = 200.0
+offset_top = 200.0
+offset_right = 300.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
+text = "S"
+
+[node name="Left" type="TextEdit" parent="VBoxContainer/Movement"]
+layout_mode = 2
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
+text = "A"
+
+[node name="Right" type="TextEdit" parent="VBoxContainer/Movement"]
+layout_mode = 2
+offset_left = 300.0
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 300.0
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
+text = "D"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Movement"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 20.0
+offset_right = 900.0
+offset_bottom = 152.0
+theme_override_colors/default_color = Color(0.690196, 0.690196, 0.690196, 0.843137)
+theme_override_font_sizes/normal_font_size = 70
+text = "Editable"
+
+[connection signal="text_changed" from="VBoxContainer/Movement/Up" to="." method="_on_up_text_changed"]
+[connection signal="text_set" from="VBoxContainer/Movement/Up" to="." method="_on_up_text_set"]
+[connection signal="text_changed" from="VBoxContainer/Movement/Down" to="." method="_on_down_text_changed"]
+[connection signal="text_set" from="VBoxContainer/Movement/Down" to="." method="_on_down_text_set"]
+[connection signal="text_changed" from="VBoxContainer/Movement/Left" to="." method="_on_left_text_changed"]
+[connection signal="text_set" from="VBoxContainer/Movement/Left" to="." method="_on_left_text_set"]
+[connection signal="text_changed" from="VBoxContainer/Movement/Right" to="." method="_on_right_text_changed"]
+[connection signal="text_set" from="VBoxContainer/Movement/Right" to="." method="_on_right_text_set"]
