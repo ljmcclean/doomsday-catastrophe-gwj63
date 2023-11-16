@@ -63,7 +63,7 @@ func _on_hurt_box_area_entered(area):
 
 func die():
 	if !player_data.is_dead:
-		SaveAndLoad.save_data()
+		await SaveAndLoad.save_data()
 		$Camera2D/LoadDelay.start()
 		var tween = get_tree().create_tween()
 		tween.tween_property($Camera2D/Black, "modulate", Color(1, 1, 1, 1), .4)

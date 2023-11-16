@@ -28,3 +28,8 @@ func upgrade(upgrade_name : String):
 	speed = clamp(speed, 0, 180)
 	fire_rate = clamp(fire_rate, .2, .35)
 	bullet_speed = clamp(bullet_speed, 0, 400)
+
+
+func _to_string():
+	var string = ("MaxHealth:"+str(max_health)+"Health:"+str(health)+"Speed:"+str(speed)+"Currency:"+str(currency)+"FireRate:"+str(fire_rate)+"BulletSpeed:"+str(bullet_speed))
+	return string
