@@ -1,5 +1,11 @@
 extends Node2D
 
+@export var player_data : Resource
+
+func _ready():
+	player_data.spawn_location = Vector2i(535, 425)
+	$Cat.respawn()
+
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):

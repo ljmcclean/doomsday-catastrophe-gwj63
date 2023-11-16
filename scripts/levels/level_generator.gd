@@ -20,6 +20,7 @@ var halls_hor : Array
 var halls_ver : Array
 
 var rooms_placed : Array
+var spawn_positions : Array
 
 var tiles: Dictionary = {
 	"wall" : Vector2i(0, 5),
@@ -100,16 +101,34 @@ func generate_room(coords : Vector2i, first_room : bool) -> void:
 					if data.get_custom_data("spawn_point"):
 						player_data.spawn_location = current_level.map_to_local(Vector2i(x, y))
 						$Cat.position = current_level.map_to_local(Vector2i(x, y))
-			else:
+			elif current_room not in rooms_placed:
 				var data = current_room.get_cell_tile_data(0, Vector2i(x, y))
 				if data:
 					if data.get_custom_data("enemy_spawn_point"):
-						if randf() >= enemy_spawn_rate:
-							var new_enemy = enemy.instantiate()
-							add_child.call_deferred(new_enemy)
-							new_enemy.position = current_level.map_to_local(Vector2i(x+coords.x, y+coords.y))
+						spawn_positions.append(current_level.map_to_local(Vector2i(x+coords.x, y+coords.y)))
 			var cell = Vector2i(x+coords.x, y+coords.y)
 			current_level.set_cell(0, cell, 1, current_room.get_cell_atlas_coords(0, Vector2i(x, y)))
+	if !first_room:
+		spawn_enemies()
+
+
+# handle enemy spawns, guarantee one per room
+func spawn_enemies():
+	var spawn
+	if len(spawn_positions) > 0:
+		var first_enemy = enemy.instantiate()
+		add_child.call_deferred(first_enemy)
+		spawn = spawn_positions.pick_random()
+		spawn_positions.erase(spawn)
+		first_enemy.position = spawn
+	
+	for cell in spawn_positions:
+		spawn = spawn_positions.pick_random()
+		spawn_positions.erase(spawn)
+		if randf() >= enemy_spawn_rate:
+			var new_enemy = enemy.instantiate()
+			add_child.call_deferred(new_enemy)
+			new_enemy.position = spawn
 
 
 func generate_hall(coords : Vector2i, orientation : String, direction : String) -> void:

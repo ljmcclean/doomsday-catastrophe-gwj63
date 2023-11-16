@@ -58,6 +58,24 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.3, 0.3)
 
+[node name="Black" type="ColorRect" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 600
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -371.0
+offset_top = -209.0
+offset_right = 377.0
+offset_bottom = 217.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0235294, 0, 1)
+
+[node name="LoadDelay" type="Timer" parent="Camera2D"]
+wait_time = 0.45
+one_shot = true
+
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
@@ -73,7 +91,6 @@ is_player = true
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8mxdj")
 volume_db = 10.0
-bus = &"Walking"
 script = ExtResource("6_0jcif")
 walking_sounds = Array[AudioStreamWAV]([ExtResource("6_ei4aj"), ExtResource("7_igkm0"), ExtResource("8_7qcpb"), ExtResource("9_u27n2"), ExtResource("10_7do8r")])
 
@@ -82,4 +99,5 @@ walking_sounds = Array[AudioStreamWAV]([ExtResource("6_ei4aj"), ExtResource("7_i
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupRange"]
 shape = SubResource("CircleShape2D_t1rt2")
 
+[connection signal="timeout" from="Camera2D/LoadDelay" to="." method="_on_load_delay_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

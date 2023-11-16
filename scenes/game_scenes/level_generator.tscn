@@ -19,6 +19,5 @@ z_index = -1
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_sc2a8")
 volume_db = -80.0
-bus = &"LevelMusic"
 
 [connection signal="player_died" from="Cat" to="." method="_on_cat_player_died"]

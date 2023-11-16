@@ -62,18 +62,22 @@ func _on_hurt_box_area_entered(area):
 
 
 func die():
-	respawn()
+	if !player_data.is_dead:
+		$Camera2D/LoadDelay.start()
+		var tween = get_tree().create_tween()
+		tween.tween_property($Camera2D/Black, "modulate", Color(1, 1, 1, 1), .4)
+		player_data.is_dead = true
 
 
 func respawn():
+	player_data.is_dead = false
 	player_data.health = 5
-	emit_signal("player_died")
 
 
 #updates player_data resource which can be accessed by other scripts
 func update_player_data():
 	player_data.player_position = self.position
-	if player_data.health <= 0:
+	if player_data.health <= 0 and !player_data.is_dead:
 		die()
 	$Gun.cooldown = player_data.fire_rate
 	$Gun.bullet_speed = player_data.bullet_speed
@@ -82,3 +86,6 @@ func update_player_data():
 func dodge():
 	pass
 
+
+func _on_load_delay_timeout():
+	emit_signal("player_died")

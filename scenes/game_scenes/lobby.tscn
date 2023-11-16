@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cly8tprr0px40"]
+[gd_scene load_steps=12 format=3 uid="uid://cly8tprr0px40"]
 
 [ext_resource type="Script" path="res://scripts/game/lobby.gd" id="1_klfky"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_x3k1b"]
 [ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/outdoor_tileset.tres" id="3_mq2j0"]
 [ext_resource type="AudioStream" uid="uid://hrg1l814nmy6" path="res://assets/audio/menu/Button_2.wav" id="4_7s4rg"]
 [ext_resource type="PackedScene" uid="uid://yrrgdej2dv7m" path="res://scenes/envrionmental_objects/upgrade.tscn" id="5_fnnb4"]
@@ -15,6 +16,7 @@ size = Vector2(12.5, 16.25)
 
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_klfky")
+player_data = ExtResource("2_x3k1b")
 
 [node name="Cat" parent="." instance=ExtResource("1_kxa5x")]
 position = Vector2(535, 425)
