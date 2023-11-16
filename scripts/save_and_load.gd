@@ -10,7 +10,9 @@ var first_play = true
 
 
 func _ready():
+	load_data()
 	if first_play:
+		print_debug("setting defaults")
 		first_play = false
 		player_data.max_health = 5
 		player_data.health = 5
@@ -32,8 +34,7 @@ func save_player():
 		"speed" : player_data.speed,
 		"currency" : player_data.currency,
 		"fire_rate" : player_data.fire_rate,
-		"bullet_speed" : player_data.bullet_speed,
-		"first_play" : player_data.first_play
+		"bullet_speed" : player_data.bullet_speed
 	}
 	return save_dict
 
@@ -104,7 +105,6 @@ func load_data():
 	var line_num := 0
 	while save_game.get_position() < save_game.get_length():
 		var json_string = save_game.get_line()
-		print_debug(json_string)
 		var json = JSON.new()
 		
 		var parse_result = json.parse(json_string)
@@ -112,7 +112,6 @@ func load_data():
 			continue
 		
 		var save_data = json.get_data()
-		print_debug(save_data)
 		
 		for i in save_data.keys():
 			if line_num == 0:
@@ -126,7 +125,7 @@ func load_data():
 			elif line_num == 4:
 				upgrade_data_4.set(i, save_data[i])
 			elif line_num == 5:
-				self.set(i, save_data[i])
+				set(i, save_data[i])
 			line_num += 1
 
 
