@@ -36,6 +36,7 @@ shape = SubResource("RectangleShape2D_2n1il")
 
 [node name="NextSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7s4rg")
+bus = &"SFX"
 
 [node name="LoadDelay" type="Timer" parent="."]
 wait_time = 0.15

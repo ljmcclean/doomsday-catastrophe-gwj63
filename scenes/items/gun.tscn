@@ -19,6 +19,7 @@ script = ExtResource("2_fusl5")
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8vf7o")
+bus = &"SFX"
 script = ExtResource("3_ruheo")
 gunshot_sounds = Array[AudioStreamWAV]([ExtResource("4_ogklu"), ExtResource("5_ddr66"), ExtResource("6_j3jwi"), ExtResource("7_i8qt0"), ExtResource("8_oyrrh"), ExtResource("9_oi86a")])
 
