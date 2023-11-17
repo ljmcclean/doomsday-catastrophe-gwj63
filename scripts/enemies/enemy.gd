@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 @export var player_data : Resource
 
-var health := 3
+@export var health := 3
 
 var player_in_move_radius := false
 var player_in_attack_radius := false

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://45rnbsf7x2r5"]
+[gd_scene load_steps=5 format=3 uid="uid://45rnbsf7x2r5"]
 
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_yhhtq"]
 [ext_resource type="Script" path="res://scripts/game/main_menu.gd" id="2_wqd7t"]
 [ext_resource type="AudioStream" uid="uid://bll2bymsxkc0i" path="res://assets/audio/menu/Button_1.wav" id="3_hj526"]
+[ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="4_7yohx"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,5 +59,8 @@ wait_time = 0.5
 
 [node name="StartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_hj526")
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_7yohx")
 
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]
