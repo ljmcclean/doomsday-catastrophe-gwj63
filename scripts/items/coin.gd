@@ -4,7 +4,6 @@ extends CharacterBody2D
 
 var player_in_pickup_range: bool = false
 
-
 func _physics_process(_delta):
 	if player_in_pickup_range:
 		velocity = 100 * position.direction_to(player_data.player_position)

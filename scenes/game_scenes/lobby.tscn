@@ -50,7 +50,7 @@ stream = ExtResource("4_7s4rg")
 bus = &"SFX"
 
 [node name="LoadDelay" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.4
 one_shot = true
 
 [node name="UpgradeSpeed" parent="." instance=ExtResource("5_fnnb4")]

@@ -1,34 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://iuqwrurqc6fy"]
+[gd_scene load_steps=10 format=3 uid="uid://b5rmcnkadqxyw"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_j0w12"]
-[ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="2_m12cv"]
-[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_x6q4o"]
-[ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/items/gun.tscn" id="4_itan3"]
+[ext_resource type="Script" path="res://scripts/enemies/melee_enemy.gd" id="1_ego7q"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ovvwk"]
+[ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="3_o3csr"]
+[ext_resource type="Texture2D" uid="uid://b0366fyv0pbll" path="res://assets/art/objects/fountain.png" id="4_hb74e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytj25"]
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ontt"]
-radius = 88.0
+radius = 30.4138
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij0ce"]
 radius = 134.093
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3hoxy"]
-radius = 83.0241
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_asqw1"]
-radius = 13.0
+radius = 9.05539
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-script = ExtResource("1_j0w12")
-player_data = ExtResource("2_x6q4o")
+[sub_resource type="CircleShape2D" id="CircleShape2D_ef8d3"]
+radius = 9.21954
+
+[node name="MeleeeEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_ego7q")
+player_data = ExtResource("2_ovvwk")
 
 [node name="Temporary" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ytj25")
 
 [node name="Temporary2" type="Sprite2D" parent="."]
-texture = ExtResource("2_m12cv")
+texture = ExtResource("3_o3csr")
 
 [node name="AttackRadius" type="Area2D" parent="."]
 
@@ -42,23 +42,12 @@ debug_color = Color(0.988235, 0, 0.282353, 0.419608)
 shape = SubResource("CircleShape2D_ij0ce")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
-[node name="StopMoveRadius" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StopMoveRadius"]
-shape = SubResource("CircleShape2D_3hoxy")
-debug_color = Color(0.67451, 0.505882, 0, 0.419608)
-
 [node name="HurtBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_asqw1")
 
 [node name="AttackCooldown" type="Timer" parent="."]
-
-[node name="Gun" parent="." instance=ExtResource("4_itan3")]
-scale = Vector2(0.01, 0.01)
-bullet_speed = 180
-spread = 0.3
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -69,12 +58,21 @@ wait_time = 0.25
 [node name="DeathTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AttackArea" type="Area2D" parent="." groups=["damage_source"]]
+scale = Vector2(1e-05, 1e-05)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_ef8d3")
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackArea"]
+modulate = Color(1, 0, 0, 0.423529)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_hb74e")
+
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
 [connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]
 [connection signal="body_entered" from="MoveRadius" to="." method="_on_move_radius_body_entered"]
 [connection signal="body_exited" from="MoveRadius" to="." method="_on_move_radius_body_exited"]
-[connection signal="body_entered" from="StopMoveRadius" to="." method="_on_stop_move_radius_body_entered"]
-[connection signal="body_exited" from="StopMoveRadius" to="." method="_on_stop_move_radius_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]

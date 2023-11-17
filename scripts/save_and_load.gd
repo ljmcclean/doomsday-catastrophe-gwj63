@@ -88,6 +88,7 @@ func save_data():
 
 
 func load_data():
+	player_data.health = 5
 	if not FileAccess.file_exists("user://savegame.dat"):
 		return
 	
@@ -103,7 +104,6 @@ func load_data():
 			continue
 		
 		var save_data = json.get_data()
-		print(save_data)
 		
 		if line_num == 0:
 			player_data.max_health = save_data["max_health"]
@@ -121,7 +121,6 @@ func load_data():
 		elif line_num == 4:
 			upgrade_data_4.cost = save_data["cost4"]
 		line_num += 1
-	print_debug(player_data.to_string())
 
 
 func _notification(what):

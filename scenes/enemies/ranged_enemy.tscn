@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://iuqwrurqc6fy"]
+
+[ext_resource type="Script" path="res://scripts/enemies/ranged_enemy.gd" id="1_rp35f"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_fwgmh"]
+[ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="3_7g4fu"]
+[ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/items/gun.tscn" id="4_bcn4s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ytj25"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ontt"]
+radius = 88.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij0ce"]
+radius = 134.093
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hoxy"]
+radius = 83.0241
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_asqw1"]
+radius = 13.0
+
+[node name="RangedEnemy" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_rp35f")
+player_data = ExtResource("2_fwgmh")
+
+[node name="Temporary" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ytj25")
+
+[node name="Temporary2" type="Sprite2D" parent="."]
+texture = ExtResource("3_7g4fu")
+
+[node name="AttackRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource("CircleShape2D_8ontt")
+debug_color = Color(0.988235, 0, 0.282353, 0.419608)
+
+[node name="MoveRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MoveRadius"]
+shape = SubResource("CircleShape2D_ij0ce")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="StopMoveRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopMoveRadius"]
+shape = SubResource("CircleShape2D_3hoxy")
+debug_color = Color(0.67451, 0.505882, 0, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_asqw1")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("4_bcn4s")]
+scale = Vector2(0.01, 0.01)
+bullet_speed = 180
+spread = 0.3
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PathfindTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.25
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
+[connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]
+[connection signal="body_entered" from="MoveRadius" to="." method="_on_move_radius_body_entered"]
+[connection signal="body_exited" from="MoveRadius" to="." method="_on_move_radius_body_exited"]
+[connection signal="body_entered" from="StopMoveRadius" to="." method="_on_stop_move_radius_body_entered"]
+[connection signal="body_exited" from="StopMoveRadius" to="." method="_on_stop_move_radius_body_exited"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

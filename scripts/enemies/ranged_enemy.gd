@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 @export var speed := 30
 @export var accel := 1500
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -92,9 +91,10 @@ func _on_hurt_box_area_entered(area):
 
 
 func _on_death_timer_timeout():
-	var dropped_coin = coin.instantiate()
-	get_tree().root.add_child(dropped_coin)
-	dropped_coin.position = position
+	for i in randi_range(1, 4):
+		var dropped_coin = coin.instantiate()
+		get_tree().root.add_child(dropped_coin)
+		dropped_coin.position = position + Vector2(randi_range(-15, 15), randi_range(-15, 15))
 	queue_free()
 
 

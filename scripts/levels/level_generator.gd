@@ -7,7 +7,8 @@ extends Node2D
 @onready var hall_templates_ver: Node = preload("res://scenes/levels/hall_templates_ver.tscn").instantiate()
 
 @export var enemy_spawn_rate: float = .5
-var enemy := preload("res://scenes/enemies/enemy.tscn")
+var ranged_enemy := preload("res://scenes/enemies/ranged_enemy.tscn")
+var melee_enemy := preload("res://scenes/enemies/melee_enemy.tscn")
 
 @export var player_data : Resource
 
@@ -39,7 +40,10 @@ func _ready():
 	generate_level()
 	var tween = get_tree().create_tween()
 	$Music.play()
+	$LoadCam.enabled = false
+	tween.tween_property($LoadCam/ColorRect, "modulate", Color(1, 1, 1, 0), .3)
 	tween.tween_property($Music, "volume_db", 0, .8)
+	tween.tween_property($Cat/Camera2D/Black, "modulate", Color(1, 1, 1, 0), .4)
 
 
 func generate_level() -> void:
@@ -116,7 +120,12 @@ func generate_room(coords : Vector2i, first_room : bool) -> void:
 func spawn_enemies():
 	var spawn
 	if len(spawn_positions) > 0:
-		var first_enemy = enemy.instantiate()
+		var first_enemy
+		if randi_range(1, 2) == 1:
+			first_enemy = ranged_enemy.instantiate()
+		else:
+			first_enemy = melee_enemy.instantiate()
+		
 		add_child.call_deferred(first_enemy)
 		spawn = spawn_positions.pick_random()
 		spawn_positions.erase(spawn)
@@ -126,7 +135,11 @@ func spawn_enemies():
 		spawn = spawn_positions.pick_random()
 		spawn_positions.erase(spawn)
 		if randf() >= enemy_spawn_rate:
-			var new_enemy = enemy.instantiate()
+			var new_enemy
+			if randi_range(1, 2) == 1:
+				new_enemy = ranged_enemy.instantiate()
+			else:
+				new_enemy = melee_enemy.instantiate()
 			add_child.call_deferred(new_enemy)
 			new_enemy.position = spawn
 

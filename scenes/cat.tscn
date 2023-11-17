@@ -59,8 +59,7 @@ grow_vertical = 1
 scale = Vector2(0.3, 0.3)
 
 [node name="Black" type="ColorRect" parent="Camera2D"]
-modulate = Color(1, 1, 1, 0)
-z_index = 600
+z_index = 999
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,7 +69,7 @@ offset_right = 377.0
 offset_bottom = 217.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.0235294, 0, 1)
+color = Color(0.0156863, 0.0156863, 0, 1)
 
 [node name="LoadDelay" type="Timer" parent="Camera2D"]
 wait_time = 0.45

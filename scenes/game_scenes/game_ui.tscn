@@ -84,9 +84,8 @@ text = "0
 "
 scroll_active = false
 
-[node name="Button" type="Button" parent="."]
+[node name="HelpButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.647059)
-z_index = 500
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -102,4 +101,4 @@ theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxEmpty_imf7t")
 text = "?"
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="HelpButton" to="." method="_on_button_button_down"]
