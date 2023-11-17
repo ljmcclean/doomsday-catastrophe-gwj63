@@ -36,6 +36,10 @@ project/assembly_name="Godot Wild Jam"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/custom="res://resources/themes/standard_theme.tres"
+
 [input]
 
 up={

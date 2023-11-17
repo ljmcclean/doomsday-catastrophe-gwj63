@@ -7,6 +7,8 @@ func _ready():
 		SaveAndLoad.load_data()
 	player_data.spawn_location = Vector2i(535, 425)
 	$Cat.respawn()
+	var tween = get_tree().create_tween()
+	tween.tween_property($LobbyLoop, "volume_db", 0, .7)
 
 
 func _on_area_2d_body_entered(body):
