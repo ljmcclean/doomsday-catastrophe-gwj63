@@ -62,5 +62,6 @@ stream = ExtResource("3_hj526")
 
 [node name="MainMenuMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7yohx")
+bus = &"LevelMusic"
 
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]
