@@ -19,6 +19,7 @@ z_index = -1
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_sc2a8")
 volume_db = -80.0
+bus = &"LevelMusic"
 
 [node name="LoadCam" type="Camera2D" parent="."]
 

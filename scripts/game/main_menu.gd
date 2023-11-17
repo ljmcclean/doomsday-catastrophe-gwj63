@@ -3,6 +3,8 @@ extends Control
 
 func _ready():
 	$MainMenuMusic.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property($MainMenuMusic, "volume_db", 0, .38)
 	
 
 func _input(event):

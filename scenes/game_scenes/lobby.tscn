@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_2n1il")
 [node name="LobbyLoop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_44c3l")
 volume_db = -80.0
+bus = &"LevelMusic"
 
 [node name="NextSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7s4rg")
