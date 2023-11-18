@@ -11,7 +11,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		$LoadDelay.start()
 		var tween = get_tree().create_tween()
-		tween.tween_property($Black, "modulate", Color(1, 1, 1, 1), .4)
+		tween.tween_property($Black, "modulate", Color(0, 0, 0, 1), .4)
 		tween.tween_property($MainMenuMusic, "volume_db", -80, .38)
 		$StartSound.play()
 

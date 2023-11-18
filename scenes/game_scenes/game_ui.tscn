@@ -113,6 +113,24 @@ text = "0
 "
 scroll_active = false
 
+[node name="HelpLayer" parent="." instance=ExtResource("6_p1tb8")]
+follow_viewport_enabled = false
+
+[node name="Black" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1739.0
+offset_top = -1114.0
+offset_right = -869.0
+offset_bottom = -556.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+color = Color(0, 0.0235294, 0, 1)
+
 [node name="HelpButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.647059)
 layout_mode = 1
@@ -133,23 +151,5 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_1q5m0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_e0f6a")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8mf40")
 text = "?"
-
-[node name="HelpLayer" parent="." instance=ExtResource("6_p1tb8")]
-follow_viewport_enabled = false
-
-[node name="Black" type="ColorRect" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1739.0
-offset_top = -1114.0
-offset_right = -869.0
-offset_bottom = -556.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-color = Color(0, 0.0235294, 0, 1)
 
 [connection signal="button_down" from="HelpButton" to="." method="_on_button_button_down"]

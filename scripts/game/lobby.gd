@@ -9,14 +9,14 @@ func _ready():
 	$Cat.respawn()
 	$LobbyLoop.play()
 	var tween = get_tree().create_tween()
-	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(1, 1, 1, 0), .4)
+	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
 	tween.tween_property($LobbyLoop, "volume_db", 0, .4)
 
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("player"):
 		var tween = get_tree().create_tween()
-		tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(1, 1, 1, 1), .4)
+		tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 1), .4)
 		tween.tween_property($LobbyLoop, "volume_db", -80, .3)
 		$NextSound.play()
 		$LoadDelay.start()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://scripts/levels/sub_map.gd" id="2_vwx3s"]
 
 [node name="Level" type="TileMap"]
+y_sort_enabled = true
 tile_set = ExtResource("2_13yfd")
 format = 2
 

@@ -26,6 +26,7 @@ random_volume_offset_db = 1.1
 radius = 107.703
 
 [node name="Cat" type="CharacterBody2D" groups=["player"]]
+y_sort_enabled = true
 scale = Vector2(0.35, 0.35)
 collision_layer = 65
 script = ExtResource("1_ogxmu")
@@ -85,5 +86,6 @@ walking_sounds = Array[AudioStreamWAV]([ExtResource("6_ei4aj"), ExtResource("7_i
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupRange"]
 shape = SubResource("CircleShape2D_t1rt2")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Camera2D/LoadDelay" to="." method="_on_load_delay_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

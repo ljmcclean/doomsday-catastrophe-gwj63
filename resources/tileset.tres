@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://cc1c4td0v1x2k"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://cc1c4td0v1x2k"]
 
 [ext_resource type="Texture2D" uid="uid://c1hlg2fv7x5vj" path="res://assets/art/tiles/tiles.png" id="1_8upgy"]
 
@@ -83,6 +83,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3sgph"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_an078"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
@@ -583,6 +588,7 @@ texture = ExtResource("1_8upgy")
 15:3/0 = 0
 15:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:3/0/physics_layer_0/angular_velocity = 0.0
+15:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -2, 0, -2, -4, 2, -6, 6, 0, 8, 6, 6, 6, 2)
 15:4/0 = 0
 15:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 15:4/0/physics_layer_0/angular_velocity = 0.0
@@ -855,7 +861,7 @@ texture = ExtResource("1_8upgy")
 27:2/0/modulate = Color(0, 1, 1, 1)
 27:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 27:2/0/physics_layer_0/angular_velocity = 0.0
-27:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_nhbsb")
+27:2/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_an078")
 27:2/0/custom_data_0 = true
 28:2/0 = 0
 28:2/0/modulate = Color(1, 0, 0, 1)

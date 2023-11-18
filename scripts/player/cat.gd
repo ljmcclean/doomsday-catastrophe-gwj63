@@ -54,6 +54,8 @@ func aim_gun():
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		gun.fire_bullet()
+	if event.is_action_pressed("interact"):
+		player_data.health = 100
 
 
 func _on_hurt_box_area_entered(area):

@@ -11,7 +11,10 @@ func _ready():
 func _process(_delta):
 	change_hearts()
 	$MarginContainer/Currency.text = "[right]" + str(player_data.currency)
-
+	if $Black.modulate != Color(0, 0, 0, 0):
+		$HelpButton.modulate = Color(1, 1, 1, 0)
+	else:
+		$HelpButton.modulate = Color(1, 1, 1, 1)
 
 func change_hearts():
 	if player_data.health == 8:
