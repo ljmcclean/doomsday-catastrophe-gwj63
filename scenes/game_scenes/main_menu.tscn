@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://45rnbsf7x2r5"]
+[gd_scene load_steps=7 format=3 uid="uid://45rnbsf7x2r5"]
 
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_yhhtq"]
 [ext_resource type="Script" path="res://scripts/game/main_menu.gd" id="2_wqd7t"]
 [ext_resource type="AudioStream" uid="uid://bll2bymsxkc0i" path="res://assets/audio/menu/Button_1.wav" id="3_hj526"]
 [ext_resource type="Texture2D" uid="uid://b8ue38jv3tjck" path="res://assets/art/ui/play_text.png" id="3_v11ny"]
+[ext_resource type="Texture2D" uid="uid://bsyerbtlhpw7j" path="res://assets/art/title_screen.png" id="3_wx0fc"]
 [ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="4_7yohx"]
 
 [node name="MainMenu" type="Control"]
@@ -16,14 +17,16 @@ grow_vertical = 2
 theme = ExtResource("1_yhhtq")
 script = ExtResource("2_wqd7t")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0235294, 0.0745098, 0.0156863, 1)
+texture = ExtResource("3_wx0fc")
+expand_mode = 3
+stretch_mode = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
