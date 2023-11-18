@@ -16,7 +16,7 @@ var player_in_attack_radius := false
 
 var is_dead: bool = false
 
-#var dasher: bool = false
+var dasher: bool = false
 
 func _ready():
 	nav_agent.target_desired_distance = 1
