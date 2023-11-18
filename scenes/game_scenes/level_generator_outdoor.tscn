@@ -12,7 +12,11 @@ size = Vector2(96, 32)
 [node name="LevelGeneratorOutdoor" type="Node2D" node_paths=PackedStringArray("current_level")]
 script = ExtResource("1_qktha")
 current_level = NodePath("Level")
+enemy_spawn_rate = null
 player_data = ExtResource("2_jatnr")
+room_size = null
+hall_size = null
+num_rooms = null
 
 [node name="Cat" parent="." instance=ExtResource("4_doupq")]
 
