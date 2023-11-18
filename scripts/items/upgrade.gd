@@ -4,6 +4,7 @@ extends StaticBody2D
 @export var cost_increase : int
 @export var player_data : Resource
 @export var upgrade_data : Resource
+@export var texture : Texture2D
 
 var cost : int
 
@@ -15,6 +16,8 @@ func _ready():
 	cost = upgrade_data.cost
 	$Sprite2D.texture = sprite
 	$Cost.text = "[center]" + str(cost)
+	$Icon.texture = texture
+
 
 func _on_area_2d_body_entered(body):
 	cost = upgrade_data.cost

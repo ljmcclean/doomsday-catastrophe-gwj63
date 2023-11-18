@@ -48,5 +48,12 @@ bbcode_enabled = true
 text = "100"
 scroll_active = false
 
+[node name="Icon" type="TextureRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 23.0
+scale = Vector2(0.3, 0.3)
+stretch_mode = 4
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

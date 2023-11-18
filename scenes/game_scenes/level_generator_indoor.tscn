@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://s3y3omnw2jrf"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_generator_indoor.gd" id="1_jp0t7"]
+[ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_005ht"]
+[ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="3_m4nw1"]
+[ext_resource type="PackedScene" uid="uid://canf5pee32ncn" path="res://scenes/levels/level.tscn" id="4_iiwnw"]
+[ext_resource type="AudioStream" uid="uid://dkef3lj25du01" path="res://assets/audio/music/Level_1.wav" id="5_1d7ty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg3xm"]
+size = Vector2(96, 32)
+
+[node name="LevelGeneratorIndoor" type="Node2D" node_paths=PackedStringArray("current_level")]
+script = ExtResource("1_jp0t7")
+current_level = NodePath("Level")
+player_data = ExtResource("2_005ht")
+
+[node name="Cat" parent="." instance=ExtResource("3_m4nw1")]
+
+[node name="Level" parent="." instance=ExtResource("4_iiwnw")]
+z_index = -1
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1d7ty")
+volume_db = -80.0
+bus = &"LevelMusic"
+
+[node name="LoadCam" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="LoadCam"]
+offset_left = -195.0
+offset_top = -124.0
+offset_right = 201.0
+offset_bottom = 132.0
+color = Color(0, 0, 0, 1)
+
+[node name="Exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
+shape = SubResource("RectangleShape2D_cg3xm")
+
+[connection signal="player_died" from="Cat" to="." method="_on_cat_player_died"]
+[connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

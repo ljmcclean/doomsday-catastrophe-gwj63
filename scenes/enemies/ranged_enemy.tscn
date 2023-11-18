@@ -58,7 +58,7 @@ shape = SubResource("CircleShape2D_asqw1")
 [node name="Gun" parent="." instance=ExtResource("4_bcn4s")]
 scale = Vector2(0.01, 0.01)
 bullet_speed = 180
-spread = 0.3
+spread = 0.2
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 

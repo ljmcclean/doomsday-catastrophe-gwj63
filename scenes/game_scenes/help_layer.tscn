@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxy7dwfpogdgu"]
+
+[ext_resource type="PackedScene" uid="uid://ck3msa2jkmp8x" path="res://scenes/game_scenes/help_screen.tscn" id="1_aj6ie"]
+
+[node name="HelpLayer" type="CanvasLayer"]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="HelpScreen" parent="." instance=ExtResource("1_aj6ie")]

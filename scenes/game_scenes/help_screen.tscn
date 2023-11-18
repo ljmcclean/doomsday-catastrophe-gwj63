@@ -1,22 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://ck3msa2jkmp8x"]
+[gd_scene load_steps=11 format=3 uid="uid://ck3msa2jkmp8x"]
 
-[ext_resource type="Script" path="res://scripts/game/help_screen.gd" id="1_t78o7"]
+[ext_resource type="Script" path="res://scripts/ui/help_screen.gd" id="1_qfyng"]
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="2_mga8v"]
+[ext_resource type="Script" path="res://scripts/ui/remap_button.gd" id="2_y14hs"]
+[ext_resource type="Script" path="res://scripts/ui/volume_slider.gd" id="4_m8jle"]
+[ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="6_2ek7n"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfyk7"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c00is"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dotbl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bekev"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6lck"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d53oc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_medq2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wh0ip"]
 
 [node name="HelpScreen" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_t78o7")
+script = ExtResource("1_qfyng")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -25,96 +33,221 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.0352941, 0.121569, 1)
+color = Color(0, 0.0352941, 0.121569, 0.741176)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_2ek7n")
+bus = &"LevelMusic"
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+offset_left = 28.0
+offset_top = 37.0
+offset_right = 1920.0
+offset_bottom = 187.0
+theme_override_font_sizes/normal_font_size = 150
+bbcode_enabled = true
+text = "[center]Settings"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_left = 1085.0
+offset_top = 287.0
+offset_right = 1825.0
+offset_bottom = 987.0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50
+columns = 3
+
+[node name="BLANK" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+
+[node name="Up" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+script = ExtResource("2_y14hs")
+action = "up"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GridContainer/Up"]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 159.0
+offset_right = 205.0
+offset_bottom = 202.0
+theme_override_colors/default_color = Color(0.427451, 0.427451, 0.478431, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Up"
+
+[node name="BLANK2" type="Label" parent="GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+
+[node name="Left" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+script = ExtResource("2_y14hs")
+action = "left"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GridContainer/Left"]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 161.0
+offset_right = 228.0
+offset_bottom = 235.0
+theme_override_colors/default_color = Color(0.427451, 0.427451, 0.478431, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Left"
+
+[node name="Down" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+script = ExtResource("2_y14hs")
+action = "down"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="GridContainer/Down"]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 161.0
+offset_right = 202.0
+offset_bottom = 235.0
+theme_override_colors/default_color = Color(0.427451, 0.427451, 0.478431, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Down"
+
+[node name="Right" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+script = ExtResource("2_y14hs")
+action = "right"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="GridContainer/Right"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 161.0
+offset_right = 198.0
+offset_bottom = 235.0
+theme_override_colors/default_color = Color(0.427451, 0.427451, 0.478431, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Right"
+
+[node name="Interact" type="Button" parent="GridContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+script = ExtResource("2_y14hs")
+action = "interact"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="GridContainer/Interact"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 160.0
+offset_right = 210.0
+offset_bottom = 240.0
+theme_override_colors/default_color = Color(0.427451, 0.427451, 0.478431, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Interact"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 offset_left = 28.0
-offset_right = 1920.0
+offset_top = 37.0
+offset_right = 911.0
 offset_bottom = 1080.0
 theme = ExtResource("2_mga8v")
+theme_override_constants/separation = 100
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+[node name="BLANK" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-theme = ExtResource("2_mga8v")
-theme_override_font_sizes/normal_font_size = 200
-bbcode_enabled = true
-text = "Controls"
-scroll_active = false
 
-[node name="Movement" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 300)
+[node name="Master" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(0.866667, 0.862745, 0.909804, 1)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 100
-text = "Movement"
+text = "Master"
 
-[node name="Up" type="TextEdit" parent="VBoxContainer/Movement"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Master"]
+modulate = Color(0.866667, 0.862745, 0.909804, 1)
 layout_mode = 2
-offset_left = 200.0
-offset_top = 100.0
-offset_right = 300.0
-offset_bottom = 200.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
-text = "W"
-context_menu_enabled = false
-shortcut_keys_enabled = false
-caret_blink = true
+offset_left = 350.0
+offset_top = -3.0
+offset_right = 522.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+max_value = 2.0
+step = 0.01
+script = ExtResource("4_m8jle")
+bus_name = "Master"
 
-[node name="Down" type="TextEdit" parent="VBoxContainer/Movement"]
+[node name="Music" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(0.866667, 0.862745, 0.909804, 1)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-offset_left = 200.0
-offset_top = 200.0
-offset_right = 300.0
-offset_bottom = 300.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
-text = "S"
+theme_override_font_sizes/normal_font_size = 100
+text = "Music"
 
-[node name="Left" type="TextEdit" parent="VBoxContainer/Movement"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Music"]
+modulate = Color(0.866667, 0.862745, 0.909804, 1)
 layout_mode = 2
-offset_left = 100.0
-offset_top = 200.0
-offset_right = 200.0
-offset_bottom = 300.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
-text = "A"
+offset_left = 350.0
+offset_top = -3.0
+offset_right = 522.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+max_value = 2.0
+step = 0.01
+script = ExtResource("4_m8jle")
+bus_name = "LevelMusic"
 
-[node name="Right" type="TextEdit" parent="VBoxContainer/Movement"]
+[node name="SFX" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(0.866667, 0.862745, 0.909804, 1)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-offset_left = 300.0
-offset_top = 200.0
-offset_right = 400.0
-offset_bottom = 300.0
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rfyk7")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_dotbl")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_l6lck")
-text = "D"
+theme_override_font_sizes/normal_font_size = 100
+text = "SFX
+"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Movement"]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 20.0
-offset_right = 900.0
-offset_bottom = 152.0
-theme_override_colors/default_color = Color(0.690196, 0.690196, 0.690196, 0.843137)
-theme_override_font_sizes/normal_font_size = 70
-text = "Editable"
+[node name="HSlider" type="HSlider" parent="VBoxContainer/SFX"]
+layout_mode = 2
+offset_left = 350.0
+offset_top = -3.0
+offset_right = 522.0
+offset_bottom = 31.0
+scale = Vector2(3, 3)
+max_value = 2.0
+step = 0.01
+script = ExtResource("4_m8jle")
+bus_name = "SFX"
 
-[connection signal="text_changed" from="VBoxContainer/Movement/Up" to="." method="_on_up_text_changed"]
-[connection signal="text_set" from="VBoxContainer/Movement/Up" to="." method="_on_up_text_set"]
-[connection signal="text_changed" from="VBoxContainer/Movement/Down" to="." method="_on_down_text_changed"]
-[connection signal="text_set" from="VBoxContainer/Movement/Down" to="." method="_on_down_text_set"]
-[connection signal="text_changed" from="VBoxContainer/Movement/Left" to="." method="_on_left_text_changed"]
-[connection signal="text_set" from="VBoxContainer/Movement/Left" to="." method="_on_left_text_set"]
-[connection signal="text_changed" from="VBoxContainer/Movement/Right" to="." method="_on_right_text_changed"]
-[connection signal="text_set" from="VBoxContainer/Movement/Right" to="." method="_on_right_text_set"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -191.0
+offset_top = -81.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c00is")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bekev")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d53oc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_medq2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wh0ip")
+text = "Exit"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

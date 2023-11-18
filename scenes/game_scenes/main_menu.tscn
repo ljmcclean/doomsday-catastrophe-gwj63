@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://45rnbsf7x2r5"]
+[gd_scene load_steps=6 format=3 uid="uid://45rnbsf7x2r5"]
 
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_yhhtq"]
 [ext_resource type="Script" path="res://scripts/game/main_menu.gd" id="2_wqd7t"]
 [ext_resource type="AudioStream" uid="uid://bll2bymsxkc0i" path="res://assets/audio/menu/Button_1.wav" id="3_hj526"]
+[ext_resource type="Texture2D" uid="uid://b8ue38jv3tjck" path="res://assets/art/ui/play_text.png" id="3_v11ny"]
 [ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="4_7yohx"]
 
 [node name="MainMenu" type="Control"]
@@ -31,18 +32,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -230.5
-offset_top = 125.0
-offset_right = 230.5
-offset_bottom = 175.0
+offset_left = -360.0
+offset_top = 100.0
+offset_right = 140.0
+offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 
-[node name="Label" type="Label" parent="CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Press Enter to Start"
-horizontal_alignment = 1
+texture = ExtResource("3_v11ny")
+stretch_mode = 4
 
 [node name="Black" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
