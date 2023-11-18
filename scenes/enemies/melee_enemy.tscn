@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5rmcnkadqxyw"]
+[gd_scene load_steps=11 format=3 uid="uid://b5rmcnkadqxyw"]
 
 [ext_resource type="Script" path="res://scripts/enemies/melee_enemy.gd" id="1_ego7q"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ovvwk"]
@@ -16,6 +16,9 @@ radius = 134.093
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_asqw1"]
 radius = 9.05539
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uidjr"]
+radius = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ef8d3"]
 radius = 9.21954
@@ -47,6 +50,13 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_asqw1")
 
+[node name="DashRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashRadius"]
+shape = SubResource("CircleShape2D_uidjr")
+one_way_collision_margin = 0.0
+debug_color = Color(0.219608, 0.745098, 0.419608, 0.517647)
+
 [node name="AttackCooldown" type="Timer" parent="."]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
@@ -74,6 +84,8 @@ texture = ExtResource("4_hb74e")
 [connection signal="body_entered" from="MoveRadius" to="." method="_on_move_radius_body_entered"]
 [connection signal="body_exited" from="MoveRadius" to="." method="_on_move_radius_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_dash_radius_body_entered"]
+[connection signal="body_entered" from="DashRadius" to="." method="_on_dash_radius_body_entered"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

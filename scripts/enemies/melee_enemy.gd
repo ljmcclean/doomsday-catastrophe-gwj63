@@ -16,9 +16,12 @@ var player_in_attack_radius := false
 
 var is_dead: bool = false
 
+var dasher: bool = false
 
 func _ready():
 	nav_agent.target_desired_distance = 1
+	#if(randi() % 2 == 1):
+	dasher = true
 
 
 func _physics_process(delta):
@@ -58,6 +61,11 @@ func _on_move_radius_body_exited(body):
 		pathfind_timer.stop()
 		player_in_move_radius = false
 
+func _on_dash_radius_body_entered(body):
+	print(body)
+	if body.is_in_group("damage_source"):
+		print("it happened")
+		speed *= 4
 
 func attack():
 	if !is_dead:
@@ -96,3 +104,7 @@ func _on_death_timer_timeout():
 		get_tree().root.add_child(dropped_coin)
 		dropped_coin.position = position + Vector2(randi_range(-15, 15), randi_range(-15, 15))
 	queue_free()
+
+
+func _on_dash_radius_area_entered(area):
+	pass # Replace with function body.
