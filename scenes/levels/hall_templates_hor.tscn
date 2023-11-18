@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drp7aekvgotek"]
 
-[ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/outdoor_tileset.tres" id="1_gphmp"]
+[ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/tileset.tres" id="1_gphmp"]
 
 [node name="HallTemplatesHor" type="Node"]
 
