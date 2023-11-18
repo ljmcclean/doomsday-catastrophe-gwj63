@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/game/lobby.gd" id="1_klfky"]
 [ext_resource type="PackedScene" uid="uid://ddc1jq7syotkb" path="res://scenes/cat.tscn" id="1_kxa5x"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_x3k1b"]
-[ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/outdoor_tileset.tres" id="3_mq2j0"]
+[ext_resource type="TileSet" uid="uid://cc1c4td0v1x2k" path="res://resources/tileset.tres" id="3_mq2j0"]
 [ext_resource type="AudioStream" uid="uid://hrg1l814nmy6" path="res://assets/audio/menu/Button_2.wav" id="4_7s4rg"]
 [ext_resource type="AudioStream" uid="uid://cuo51evj78qlj" path="res://assets/audio/music/Lobby_Loop.wav" id="5_44c3l"]
 [ext_resource type="PackedScene" uid="uid://yrrgdej2dv7m" path="res://scenes/envrionmental_objects/upgrade.tscn" id="5_fnnb4"]

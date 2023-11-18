@@ -24,4 +24,4 @@ func _on_area_2d_body_entered(body):
 
 func _on_load_delay_timeout():
 	SaveAndLoad.save_data()
-	get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator.tscn")
+	get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator_outdoor.tscn")

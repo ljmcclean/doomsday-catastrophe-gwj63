@@ -736,6 +736,7 @@ texture = ExtResource("1_8upgy")
 27:2/0/modulate = Color(0, 1, 1, 1)
 27:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 27:2/0/physics_layer_0/angular_velocity = 0.0
+27:2/0/custom_data_0 = true
 28:2/0 = 0
 28:2/0/modulate = Color(1, 0, 0, 1)
 28:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)

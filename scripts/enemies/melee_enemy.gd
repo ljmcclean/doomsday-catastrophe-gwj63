@@ -62,10 +62,11 @@ func _on_move_radius_body_exited(body):
 		player_in_move_radius = false
 
 func _on_dash_radius_body_entered(body):
-	print(body)
-	if body.is_in_group("damage_source"):
-		print("it happened")
-		speed *= 4
+#	print(body)
+#	if body.is_in_group("damage_source"):
+#		print("it happened")
+#		speed *= 4
+	pass
 
 func attack():
 	if !is_dead:
