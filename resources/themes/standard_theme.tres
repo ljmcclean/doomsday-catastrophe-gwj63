@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://0ydfda14kt0l"]
 
-[ext_resource type="FontFile" uid="uid://gkmy7pmhgkuu" path="res://assets/fonts/ThaleahFat.ttf" id="1_02x80"]
+[ext_resource type="FontFile" uid="uid://dcab4q4fpmwq1" path="res://assets/fonts/Pixelfont01.ttf" id="1_c3lvf"]
 
 [resource]
-default_font = ExtResource("1_02x80")
+default_font = ExtResource("1_c3lvf")
 default_font_size = 20

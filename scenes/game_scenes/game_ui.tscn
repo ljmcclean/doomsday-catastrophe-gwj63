@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv8xf3vnqnruk"]
+[gd_scene load_steps=7 format=3 uid="uid://bv8xf3vnqnruk"]
 
-[ext_resource type="Texture2D" uid="uid://bgjn2h2yg403u" path="res://assets/art/Heart.png" id="1_4sa6f"]
 [ext_resource type="Script" path="res://scripts/game/game_ui.gd" id="1_28bk6"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ywf7l"]
+[ext_resource type="Texture2D" uid="uid://cj1i6i8iaw3jg" path="res://assets/art/ui/health_bar_cat_icon.png" id="3_678bg"]
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="3_dlycj"]
+[ext_resource type="Texture2D" uid="uid://c4qg44h18t4gl" path="res://assets/art/ui/heart_icon.png" id="4_n4h5k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imf7t"]
 
@@ -21,48 +22,62 @@ player_data = ExtResource("2_ywf7l")
 layout_mode = 0
 offset_left = 25.0
 offset_top = 25.0
-offset_right = 443.0
-offset_bottom = 65.0
-scale = Vector2(4, 4)
+offset_right = 115.0
+offset_bottom = 43.0
+scale = Vector2(10, 10)
+theme_override_constants/separation = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_678bg")
+stretch_mode = 2
 
 [node name="Heart1" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart2" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart3" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart4" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart5" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart6" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart7" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="Heart8" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_4sa6f")
+size_flags_vertical = 4
+texture = ExtResource("4_n4h5k")
 stretch_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -71,7 +86,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -312.0
-offset_bottom = 136.0
+offset_top = 32.0
+offset_right = 3.0
+offset_bottom = 165.0
 grow_horizontal = 0
 theme = ExtResource("3_dlycj")
 
