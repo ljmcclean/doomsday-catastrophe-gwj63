@@ -8,7 +8,7 @@ var bullet_scene := preload("res://scenes/items/bullet.tscn")
 @export var spread: float = 0
 
 var can_shoot : bool = true
-
+var bufferedShot = false
 
 func fire_bullet():
 	if can_shoot:
@@ -22,7 +22,10 @@ func fire_bullet():
 		$ShootSound.play()
 		can_shoot = false
 		$Cooldown.start()
+		bufferedShot = false
 	else:
+		if $Cooldown.time_left < 0.1:
+			bufferedShot = true
 		$ShootSound.pitch_scale = 8
 		$ShootSound.play()
 
@@ -30,3 +33,5 @@ func fire_bullet():
 func _on_cooldown_timeout():
 	$ShootSound.pitch_scale = 1
 	can_shoot = true
+	if bufferedShot:
+		fire_bullet()
