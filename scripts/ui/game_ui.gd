@@ -3,9 +3,14 @@ extends Control
 @export var player_data : Resource
 
 
+func _ready():
+	$HelpLayer.set_process(false)
+	$HelpLayer.hide()
+
+
 func _process(_delta):
 	change_hearts()
-	$MarginContainer/Currency.text = str(player_data.currency)
+	$MarginContainer/Currency.text = "[right]" + str(player_data.currency)
 
 
 func change_hearts():
@@ -93,7 +98,7 @@ func change_hearts():
 
 
 func _on_button_button_down():
-	var tween = get_tree().create_tween()
-	tween.tween_property($Black, "modulate", Color(1, 1, 1, 1), .4)
-	await get_tree().create_timer(.45).timeout
-	get_tree().change_scene_to_file("res://scenes/game_scenes/help_screen.tscn")
+	$HelpLayer.set_process(true)
+	$HelpLayer.show()
+	$HelpLayer.get_child(0).start()
+	get_tree().paused = true

@@ -48,7 +48,7 @@ func _ready():
 	$LoadCam.enabled = false
 	tween.tween_property($LoadCam/ColorRect, "modulate", Color(1, 1, 1, 0), .3)
 	tween.tween_property($Music, "volume_db", 0, .8)
-	tween.tween_property($Cat/Camera2D/Black, "modulate", Color(1, 1, 1, 0), .4)
+	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(1, 1, 1, 0), .4)
 
 
 func generate_level() -> void:

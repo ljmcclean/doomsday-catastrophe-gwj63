@@ -66,7 +66,7 @@ func die():
 		await SaveAndLoad.save_data()
 		$Camera2D/LoadDelay.start()
 		var tween = get_tree().create_tween()
-		tween.tween_property($Camera2D/Black, "modulate", Color(1, 1, 1, 1), .4)
+		tween.tween_property($Camera2D/GameUI/Black, "modulate", Color(1, 1, 1, 1), .4)
 		player_data.is_dead = true
 
 

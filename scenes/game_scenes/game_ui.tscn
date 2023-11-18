@@ -1,28 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://bv8xf3vnqnruk"]
+[gd_scene load_steps=12 format=3 uid="uid://bv8xf3vnqnruk"]
 
-[ext_resource type="Script" path="res://scripts/game/game_ui.gd" id="1_28bk6"]
+[ext_resource type="Script" path="res://scripts/ui/game_ui.gd" id="1_y27ax"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ywf7l"]
 [ext_resource type="Texture2D" uid="uid://cj1i6i8iaw3jg" path="res://assets/art/ui/health_bar_cat_icon.png" id="3_678bg"]
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="3_dlycj"]
 [ext_resource type="Texture2D" uid="uid://c4qg44h18t4gl" path="res://assets/art/ui/heart_icon.png" id="4_n4h5k"]
+[ext_resource type="PackedScene" uid="uid://bxy7dwfpogdgu" path="res://scenes/game_scenes/help_layer.tscn" id="6_p1tb8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_imf7t"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1icko"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1q5m0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e0f6a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8mf40"]
+
 [node name="GameUI" type="Control"]
+process_mode = 3
+show_behind_parent = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_28bk6")
+script = ExtResource("1_y27ax")
 player_data = ExtResource("2_ywf7l")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 25.0
-offset_right = 115.0
+offset_right = 215.0
 offset_bottom = 43.0
 scale = Vector2(10, 10)
 theme_override_constants/separation = 1
@@ -85,10 +96,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -312.0
-offset_top = 32.0
-offset_right = 3.0
-offset_bottom = 165.0
+offset_left = -291.0
+offset_top = 73.0
+offset_right = -19.0
+offset_bottom = 168.0
 grow_horizontal = 0
 theme = ExtResource("3_dlycj")
 
@@ -96,7 +107,8 @@ theme = ExtResource("3_dlycj")
 modulate = Color(1, 1, 0.6, 1)
 layout_mode = 2
 theme = ExtResource("3_dlycj")
-theme_override_font_sizes/normal_font_size = 150
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
 text = "0
 "
 scroll_active = false
@@ -109,13 +121,35 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -138.0
-offset_top = -120.0
+offset_left = -130.0
+offset_top = -132.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_dlycj")
 theme_override_font_sizes/font_size = 150
 theme_override_styles/normal = SubResource("StyleBoxEmpty_imf7t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_1icko")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1q5m0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_e0f6a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8mf40")
 text = "?"
+
+[node name="HelpLayer" parent="." instance=ExtResource("6_p1tb8")]
+follow_viewport_enabled = false
+
+[node name="Black" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1739.0
+offset_top = -1114.0
+offset_right = -869.0
+offset_bottom = -556.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+color = Color(0, 0.0235294, 0, 1)
 
 [connection signal="button_down" from="HelpButton" to="." method="_on_button_button_down"]
