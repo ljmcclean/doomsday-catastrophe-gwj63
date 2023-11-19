@@ -5,6 +5,7 @@ extends StaticBody2D
 @export var player_data : Resource
 @export var upgrade_data : Resource
 @export var texture : Texture2D
+var number_upgrades : int = 0
 
 var cost : int
 
@@ -21,6 +22,7 @@ func _ready():
 
 func _on_area_2d_body_entered(body):
 	cost = upgrade_data.cost
+	$RichTextLabel.text ="[center]" + str(number_upgrades) + "/5"
 	if body.is_in_group("player"):
 		is_in_area = true
 
@@ -32,6 +34,8 @@ func _on_area_2d_body_exited(body):
 
 func _input(event):
 	if is_in_area and event.is_action_pressed("interact") and player_data.currency >= cost:
+		number_upgrades+= 1
+		$RichTextLabel.text ="[center]" + "number_upgrades" + "/5"
 		apply_upgrade()
 	elif is_in_area and event.is_action_pressed("interact"):
 		$RichTextLabel.text = "[center]" + "Too expensive!"
