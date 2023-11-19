@@ -15,14 +15,10 @@ current_level = NodePath("Level")
 player_data = ExtResource("2_005ht")
 
 [node name="Cat" parent="." instance=ExtResource("3_m4nw1")]
+music = ExtResource("5_gngmi")
 
 [node name="Level" parent="." instance=ExtResource("4_iiwnw")]
 z_index = -1
-
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_gngmi")
-volume_db = -80.0
-bus = &"LevelMusic"
 
 [node name="LoadCam" type="Camera2D" parent="."]
 
@@ -43,6 +39,5 @@ wait_time = 0.5
 one_shot = true
 
 [connection signal="player_died" from="Cat" to="." method="_on_cat_player_died"]
-[connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
 [connection signal="timeout" from="LoadTimer" to="." method="_on_load_timer_timeout"]

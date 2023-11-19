@@ -7,6 +7,7 @@ var player: bool = true
 @export var acceleration : float
 
 @export var player_data : Resource
+@export var music : AudioStreamWAV
 
 @onready var gun = $Gun
 @onready var walking_sound = $WalkingSound
@@ -18,6 +19,10 @@ signal player_died
 
 
 func _ready():
+	$Music.stream = music
+	$Music.play()
+	var tween = get_tree().create_tween()
+	tween.tween_property($Music, "volume_db", 0, .5)
 	nor_modulate = $Sprite.modulate
 	add_to_group("cat")
 
@@ -59,8 +64,6 @@ func aim_gun():
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		gun.fire_bullet()
-	if event.is_action_pressed("ui_select"):
-		player_data.health = 100
 
 
 func _on_hurt_box_area_entered(area):
@@ -72,10 +75,11 @@ func _on_hurt_box_area_entered(area):
 
 
 func die():
+	var tween = get_tree().create_tween()
+	tween.tween_property($Music, "volume_db", -80, .3)
 	if !player_data.is_dead:
 		await SaveAndLoad.save_data()
 		$Camera2D/LoadDelay.start()
-		var tween = get_tree().create_tween()
 		tween.tween_property($Camera2D/GameUI/Black, "modulate", Color(1, 1, 1, 1), .4)
 		player_data.is_dead = true
 

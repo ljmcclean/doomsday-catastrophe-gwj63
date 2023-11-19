@@ -753,6 +753,11 @@ stream = ExtResource("12_3dujc")
 volume_db = 2.0
 bus = &"SFX"
 
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+volume_db = -80.0
+autoplay = true
+bus = &"LevelMusic"
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Camera2D/LoadDelay" to="." method="_on_load_delay_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

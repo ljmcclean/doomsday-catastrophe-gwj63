@@ -27,8 +27,30 @@ size = Vector2(12.5, 16.25)
 script = ExtResource("1_klfky")
 player_data = ExtResource("2_x3k1b")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0.235294)
+offset_left = 432.0
+offset_top = 408.0
+offset_right = 592.0
+offset_bottom = 472.0
+scale = Vector2(0.5, 0.5)
+text = "Press e to interact with upgrade stations"
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0.235294)
+offset_left = 568.0
+offset_top = 408.0
+offset_right = 744.0
+offset_bottom = 488.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/normal_font_size = 18
+text = "Levels are completed by exiting through openings in the map"
+scroll_active = false
+
 [node name="Cat" parent="." instance=ExtResource("1_kxa5x")]
 position = Vector2(535, 425)
+music = ExtResource("5_44c3l")
 metadata/_edit_group_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -44,11 +66,6 @@ position = Vector2(100, 0)
 position = Vector2(435, 272.5)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_2n1il")
-
-[node name="LobbyLoop" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_44c3l")
-volume_db = -80.0
-bus = &"LevelMusic"
 
 [node name="NextSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_7s4rg")
@@ -91,5 +108,4 @@ texture = ExtResource("18_rkj0m")
 sprite = ExtResource("9_un3yt")
 
 [connection signal="body_entered" from="NextArea" to="." method="_on_area_2d_body_entered"]
-[connection signal="finished" from="LobbyLoop" to="." method="_on_lobby_loop_finished"]
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]
