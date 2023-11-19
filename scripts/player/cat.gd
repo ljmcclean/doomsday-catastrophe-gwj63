@@ -10,6 +10,7 @@ var player: bool = true
 
 @onready var gun = $Gun
 @onready var walking_sound = $WalkingSound
+@onready var anim = $AnimationPlayer
 
 signal player_died
 
@@ -22,6 +23,7 @@ func _physics_process(delta):
 	if not player_data.is_dead:
 		aim_gun()
 		move(delta)
+		play_animation()
 		move_and_slide()
 	update_player_data()
 	if player_data.health <= 0:
@@ -79,11 +81,15 @@ func respawn():
 
 #updates player_data resource which can be accessed by other scripts
 func update_player_data():
+	if player_data.coin_pickedup:
+		$CoinPickup.play()
+		player_data.coin_pickedup = false
 	player_data.player_position = self.position
 	if player_data.health <= 0 and !player_data.is_dead:
 		die()
 	$Gun.cooldown = player_data.fire_rate
 	$Gun.bullet_speed = player_data.bullet_speed
+
 
 #Makes the player dodge to the direction of the mouse 
 func dodge():
@@ -92,3 +98,25 @@ func dodge():
 
 func _on_load_delay_timeout():
 	emit_signal("player_died")
+
+
+func play_animation():
+	if velocity.normalized() == Vector2(1, 0):
+		anim.play("right")
+	elif velocity.normalized() == Vector2(-1, 0):
+		anim.play("left")
+	elif velocity.normalized() == Vector2(0, -1):
+		anim.play("up")
+	elif velocity.normalized() == Vector2(0, 1):
+		anim.play("down")
+	if velocity.normalized() == (Vector2.RIGHT + Vector2.UP).normalized():
+		anim.play("up_right")
+	elif velocity.normalized() == (Vector2.LEFT + Vector2.UP).normalized():
+		anim.play("up_left")
+	elif velocity.normalized() == (Vector2.LEFT + Vector2.DOWN).normalized():
+		anim.play("down_left")
+	elif velocity.normalized() == (Vector2.RIGHT + Vector2.DOWN).normalized():
+		anim.play("down_right")
+	elif velocity.normalized() == Vector2.ZERO:
+		anim.play("sit")
+

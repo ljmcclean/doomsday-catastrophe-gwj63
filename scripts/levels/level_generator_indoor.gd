@@ -196,13 +196,13 @@ func _on_cat_player_died():
 func _on_exit_body_entered(body):
 	if body.is_in_group("player"):
 		var tween = get_tree().create_tween()
+		tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
 		tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
 		tween.tween_property($Music, "volume_db", 0, .5)
 		$LoadCam.enabled = true
-		tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
 		$LoadTimer.start()
 
 
-
 func _on_load_timer_timeout():
+	SaveAndLoad.save_data()
 	get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator_backyard.tscn")

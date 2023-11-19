@@ -13,6 +13,12 @@ var spawn_location := Vector2i(535, 425)
 
 var level_number : int
 
+var coin_pickedup: bool = false
+
+
+func coin_pickup():
+	coin_pickedup = true
+	
 
 func upgrade(upgrade_name : String):
 	if upgrade_name == "speed":

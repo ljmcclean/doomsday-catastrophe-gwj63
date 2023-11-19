@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var player_in_pickup_range: bool = false
 
+
 func _physics_process(_delta):
 	if player_in_pickup_range:
 		velocity = 100 * position.direction_to(player_data.player_position)
@@ -17,9 +18,7 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Cat":
-		$CoinPickup.play()
+	if body.is_in_group("player"):
 		player_data.currency += 1
-		await $Pickup.play()
-		
+		player_data.coin_pickup()
 		queue_free()
