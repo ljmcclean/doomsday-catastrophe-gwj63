@@ -191,12 +191,15 @@ func _on_cat_player_died():
 	get_tree().change_scene_to_file("res://scenes/game_scenes/lobby.tscn")
 
 
-func _on_exit_body_entered(body):a
-	var tween = get_tree().create_tween()
-	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
-	tween.tween_property($Music, "volume_db", 0, .8)
-	$LoadCam.enabled = true
-	tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
+func _on_exit_body_entered(body):
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator_indoor.tscn")
+		var tween = get_tree().create_tween()
+		tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
+		tween.tween_property($Music, "volume_db", 0, .5)
+		$LoadCam.enabled = true
+		tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
+		$LoadTimer.start()
 
+
+func _on_load_timer_timeout():
+	get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator_indoor.tscn")

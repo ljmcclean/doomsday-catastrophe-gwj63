@@ -19,4 +19,6 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_body_entered(body):
 	if body.name == "Cat":
 		player_data.currency += 1
+		await $Pickup.play()
+		
 		queue_free()

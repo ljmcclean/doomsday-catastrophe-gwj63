@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddc1jq7syotkb"]
+[gd_scene load_steps=18 format=3 uid="uid://ddc1jq7syotkb"]
 
 [ext_resource type="Script" path="res://scripts/player/cat.gd" id="1_ogxmu"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_hvnud"]
-[ext_resource type="Texture2D" uid="uid://bc4ove0vyqjv4" path="res://assets/art/shooter.png" id="2_k80p0"]
+[ext_resource type="Texture2D" uid="uid://cotnmqtonkcae" path="res://assets/art/cat.png" id="3_bsm7n"]
 [ext_resource type="PackedScene" uid="uid://bv8xf3vnqnruk" path="res://scenes/game_scenes/game_ui.tscn" id="4_7l6yq"]
 [ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/items/gun.tscn" id="5_l8k25"]
 [ext_resource type="Script" path="res://assets/audio/walking_sounds/walking_sound.gd" id="6_0jcif"]
@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://0ph1jf2bkng0" path="res://assets/audio/walking_sounds/Cat_Foostep5.wav" id="10_7do8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gojx1"]
-size = Vector2(3.92308, 4.92308)
+size = Vector2(3.21978, 3.6044)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7jyjg"]
 radius = 12.3901
@@ -25,6 +25,14 @@ random_volume_offset_db = 1.1
 [sub_resource type="CircleShape2D" id="CircleShape2D_t1rt2"]
 radius = 107.703
 
+[sub_resource type="Animation" id="Animation_7lwpf"]
+resource_name = "up"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o34lr"]
+_data = {
+"up": SubResource("Animation_7lwpf")
+}
+
 [node name="Cat" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 scale = Vector2(0.35, 0.35)
@@ -34,19 +42,23 @@ friction = 3000.0
 acceleration = 500.0
 player_data = ExtResource("2_hvnud")
 
-[node name="TemporarySprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_k80p0")
+texture = ExtResource("3_bsm7n")
+hframes = 8
+vframes = 16
 
-[node name="TemporaryCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-3.25, 4)
-scale = Vector2(6.5, 6.5)
+[node name="Collision2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_gojx1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 zoom = Vector2(8, 8)
 
 [node name="GameUI" parent="Camera2D" instance=ExtResource("4_7l6yq")]
+visible = false
 z_index = 500
 anchors_preset = 0
 anchor_right = 0.0
@@ -64,27 +76,36 @@ wait_time = 0.45
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 scale = Vector2(2.1, 2.1)
 shape = SubResource("CircleShape2D_7jyjg")
 
 [node name="Gun" parent="." instance=ExtResource("5_l8k25")]
+visible = false
 position = Vector2(2, -20)
 rotation = 1.5708
 scale = Vector2(0.01, 0.01)
 is_player = true
 
 [node name="WalkingSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = SubResource("AudioStreamRandomizer_8mxdj")
 bus = &"SFX"
 script = ExtResource("6_0jcif")
 walking_sounds = Array[AudioStreamWAV]([ExtResource("6_ei4aj"), ExtResource("7_igkm0"), ExtResource("8_7qcpb"), ExtResource("9_u27n2"), ExtResource("10_7do8r")])
 
 [node name="ItemPickupRange" type="Area2D" parent="." groups=["pickup_range"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupRange"]
 shape = SubResource("CircleShape2D_t1rt2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o34lr")
+}
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="timeout" from="Camera2D/LoadDelay" to="." method="_on_load_delay_timeout"]

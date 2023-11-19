@@ -12,11 +12,7 @@ size = Vector2(96, 32)
 [node name="LevelGeneratorOutdoor" type="Node2D" node_paths=PackedStringArray("current_level")]
 script = ExtResource("1_qktha")
 current_level = NodePath("Level")
-enemy_spawn_rate = null
 player_data = ExtResource("2_jatnr")
-room_size = null
-hall_size = null
-num_rooms = null
 
 [node name="Cat" parent="." instance=ExtResource("4_doupq")]
 
@@ -42,5 +38,10 @@ color = Color(0, 0, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit"]
 shape = SubResource("RectangleShape2D_0q340")
 
+[node name="LoadTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="player_died" from="Cat" to="." method="_on_cat_player_died"]
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+[connection signal="timeout" from="LoadTimer" to="." method="_on_load_timer_timeout"]

@@ -16,12 +16,12 @@ var player_in_attack_radius := false
 
 var is_dead: bool = false
 
-var dasher: bool = false
+#var dasher: bool = false
 
 func _ready():
 	nav_agent.target_desired_distance = 1
-	if(randi() % 2 == 1):
-		dasher = true
+#	if(randi() % 2 == 1):
+#		dasher = true
 
 
 func _physics_process(delta):
@@ -62,9 +62,9 @@ func _on_move_radius_body_exited(body):
 		player_in_move_radius = false
 	
 		
-func _on_dash_radius_area_entered(area):
-	if area.is_in_group("player_damage_source"):
-		speed *= 4
+#func _on_dash_radius_area_entered(area):
+#	if area.is_in_group("player_damage_source"):
+#		speed *= 4
 
 func attack():
 	if !is_dead:
@@ -95,7 +95,7 @@ func _on_attack_cooldown_timeout():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_damage_source"):
 		health -= 1
-		speed = 30
+#		speed = 30
 
 
 func _on_death_timer_timeout():

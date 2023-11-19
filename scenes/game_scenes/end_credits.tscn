@@ -1,0 +1,121 @@
+[gd_scene load_steps=4 format=3 uid="uid://bge7w0luc6jsp"]
+
+[ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_k3saj"]
+[ext_resource type="Script" path="res://scriptsend_credits.gd" id="2_gj1ff"]
+[ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="3_0js4a"]
+
+[node name="EndCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k3saj")
+script = ExtResource("2_gj1ff")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.03, 0.03, 1)
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+offset_left = -1.0
+offset_top = 187.0
+offset_right = 1924.0
+offset_bottom = 493.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]Doomsday CATastrophe"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -960.0
+offset_top = 1500.0
+offset_right = 960.0
+offset_bottom = 4140.0
+grow_horizontal = 2
+theme_override_constants/separation = 300
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "    Sound FX:         Frankie"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "    Music:               aqstic96"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "    Programmers:   Lucks"
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "                            Daek"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "                            Muftwin"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "    Artists:            Krypton Knight"
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "                            radzo73"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 50.0
+one_shot = true
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0js4a")
+volume_db = -80.0
+bus = &"LevelMusic"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

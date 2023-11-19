@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://cc1c4td0v1x2k"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://cc1c4td0v1x2k"]
 
 [ext_resource type="Texture2D" uid="uid://c1hlg2fv7x5vj" path="res://assets/art/tiles/tiles.png" id="1_8upgy"]
 
@@ -38,11 +38,6 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7ywlk"]
-vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_rxrg8"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
@@ -478,13 +473,13 @@ texture = ExtResource("1_8upgy")
 17:0/0/physics_layer_0/angular_velocity = 0.0
 17:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pcaw7")
 18:0/0 = 0
+18:0/0/modulate = Color(0, 1, 0, 1)
 18:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:0/0/physics_layer_0/angular_velocity = 0.0
-18:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rxrg8")
 19:0/0 = 0
+19:0/0/modulate = Color(0, 1, 0, 1)
 19:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:0/0/physics_layer_0/angular_velocity = 0.0
-19:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rxrg8")
 20:0/0 = 0
 20:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 20:0/0/physics_layer_0/angular_velocity = 0.0
@@ -502,13 +497,13 @@ texture = ExtResource("1_8upgy")
 20:1/0/physics_layer_0/angular_velocity = 0.0
 20:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, -2, -8, -2, -2, 4, 2, 8, 2)
 19:1/0 = 0
+19:1/0/modulate = Color(0, 1, 0, 1)
 19:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:1/0/physics_layer_0/angular_velocity = 0.0
-19:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rxrg8")
 18:1/0 = 0
+18:1/0/modulate = Color(0, 1, 0, 1)
 18:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 18:1/0/physics_layer_0/angular_velocity = 0.0
-18:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_rxrg8")
 17:1/0 = 0
 17:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 17:1/0/physics_layer_0/angular_velocity = 0.0

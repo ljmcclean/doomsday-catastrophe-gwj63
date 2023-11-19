@@ -23,10 +23,7 @@ var rooms_placed : Array
 var spawn_positions : Array
 
 var tiles: Dictionary = {
-	"wall_up" : Vector2i(18, 2),
-	"wall_down" : Vector2i(18, 2),
-	"wall_left" : Vector2i(17, 3),
-	"wall_right" : Vector2i(20, 3),
+	"wall" : Vector2i(0, 5),
 	"floor" : Vector2i(14, 3)
 }
 
@@ -88,20 +85,20 @@ func place_halls() -> void:
 			generate_hall(room_coords, "horizontal", "left")
 		else:
 			for z in range(3):
-				current_level.set_cell(0, Vector2i(room_coords.x+22, room_coords.y+6+z), 1, tiles.wall_right)
+				current_level.set_cell(0, Vector2i(room_coords.x+22, room_coords.y+6+z), 1, tiles.wall)
 		if room_coords + Vector2i(0, room_size.y + hall_size.y) in rooms_placed:
 			generate_hall(room_coords, "vertical", "none")
 		else:
 			for z in range(3):
-				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y+14), 1, tiles.wall_down)
+				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y+14), 1, tiles.wall)
 		if !room_coords - Vector2i(0, room_size.y + hall_size.y) in rooms_placed:
 			for z in range(3):
-				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y), 1, tiles.wall_up)
+				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y), 1, tiles.wall)
 		if room_coords - Vector2i(room_size.x + hall_size.y, 0) in rooms_placed:
 			generate_hall(room_coords, "horizontal", "right")
 		else:
 			for z in range(3):
-				current_level.set_cell(0, Vector2i(room_coords.x, room_coords.y+6+z), 1, tiles.wall_left)
+				current_level.set_cell(0, Vector2i(room_coords.x, room_coords.y+6+z), 1, tiles.wall)
 		if room_coords == last_room:
 			for z in range(3):
 				current_level.set_cell(0, Vector2i(room_coords.x+10+z, room_coords.y), 1, tiles.floor)
@@ -194,10 +191,15 @@ func _on_cat_player_died():
 
 
 func _on_exit_body_entered(body):
-	var tween = get_tree().create_tween()
-	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
-	tween.tween_property($Music, "volume_db", 0, .8)
-	$LoadCam.enabled = true
-	tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
 	if body.is_in_group("player"):
-		get_tree().change_scene_to_file("res://scenes/game_scenes/end_credits.tscn")
+		var tween = get_tree().create_tween()
+		tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
+		tween.tween_property($Music, "volume_db", 0, .8)
+		$LoadCam.enabled = true
+		tween.tween_property($LoadCam/ColorRect, "modulate", Color(0, 0, 0, 0), .3)
+		$LoadTimer.start()
+
+
+
+func _on_load_timer_timeout():
+	get_tree().change_scene_to_file("res://scenes/game_scenes/end_credits.tscn")
