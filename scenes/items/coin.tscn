@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://3ggorad8q6ev"]
+[gd_scene load_steps=6 format=3 uid="uid://3ggorad8q6ev"]
 
 [ext_resource type="Texture2D" uid="uid://4rpwn7105n3a" path="res://assets/art/Gold_1.png" id="1_16mg6"]
 [ext_resource type="Script" path="res://scripts/items/coin.gd" id="1_wk6hl"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_tcs3c"]
+[ext_resource type="AudioStream" uid="uid://bhbh41blcfo20" path="res://assets/sfx/coin-pickup.mp3" id="4_254nm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dires"]
 radius = 26.6667
@@ -22,6 +23,10 @@ texture = ExtResource("1_16mg6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_dires")
+
+[node name="CoinPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_254nm")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
