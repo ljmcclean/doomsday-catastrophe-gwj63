@@ -6,11 +6,14 @@ extends Node
 @export var upgrade_data_3 : Resource
 @export var upgrade_data_4 : Resource
 
+var first_run: bool = false
+
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	player_data.health = 5
 	if not FileAccess.file_exists("user://savegame.dat"):
+		first_run = true
 		player_data.max_health = 5
 		player_data.health = 5
 		player_data.speed = 100

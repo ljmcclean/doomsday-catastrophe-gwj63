@@ -91,4 +91,5 @@ texture = ExtResource("18_rkj0m")
 sprite = ExtResource("9_un3yt")
 
 [connection signal="body_entered" from="NextArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="finished" from="LobbyLoop" to="." method="_on_lobby_loop_finished"]
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]

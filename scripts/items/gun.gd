@@ -18,7 +18,7 @@ func fire_bullet():
 		bullet.speed = bullet_speed
 		get_tree().root.add_child.call_deferred(bullet)
 		bullet.global_position = global_position
-		bullet.global_rotation = global_rotation-PI/2 + randf_range(-spread, spread)
+		bullet.global_rotation = global_rotation + randf_range(-spread, spread)
 		$ShootSound.play()
 		can_shoot = false
 		$Cooldown.start()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bge7w0luc6jsp"]
 
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_k3saj"]
-[ext_resource type="Script" path="res://scriptsend_credits.gd" id="2_gj1ff"]
+[ext_resource type="Script" path="res://scripts/game/end_credits.gd" id="2_6mn3e"]
 [ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="3_0js4a"]
 
 [node name="EndCredits" type="Control"]
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_k3saj")
-script = ExtResource("2_gj1ff")
+script = ExtResource("2_6mn3e")
 
 [node name="Back" type="ColorRect" parent="."]
 layout_mode = 1
@@ -24,16 +24,26 @@ grow_vertical = 2
 color = Color(0.03, 0.03, 0.03, 1)
 
 [node name="Title" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 offset_left = -1.0
 offset_top = 187.0
 offset_right = 1924.0
 offset_bottom = 493.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 120
+theme_override_font_sizes/normal_font_size = 140
 bbcode_enabled = true
 text = "[center]Doomsday CATastrophe"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Title"]
+modulate = Color(1, 1, 1, 0.678431)
+layout_mode = 0
+offset_top = 200.0
+offset_right = 1920.0
+offset_bottom = 500.0
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[center]A classic over-ambitious game jam submission that barely got finished in time"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -96,6 +106,14 @@ theme_override_font_sizes/normal_font_size = 100
 bbcode_enabled = true
 text = "                            radzo73"
 
+[node name="RichTextLabel9" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "   Cat Asset:        Pop Shop Packs
+                           (Itch.io)"
+
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
@@ -116,6 +134,10 @@ color = Color(0.0313726, 0.0313726, 0.0313726, 0)
 stream = ExtResource("3_0js4a")
 volume_db = -80.0
 bus = &"LevelMusic"
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

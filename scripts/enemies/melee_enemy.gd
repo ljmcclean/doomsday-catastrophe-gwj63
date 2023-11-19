@@ -11,6 +11,8 @@ extends CharacterBody2D
 
 @export var health := 3
 
+var nor_modulate : Color
+
 var player_in_move_radius := false
 var player_in_attack_radius := false
 
@@ -19,6 +21,7 @@ var is_dead: bool = false
 #var dasher: bool = false
 
 func _ready():
+	nor_modulate = $Sprite.modulate
 	nav_agent.target_desired_distance = 1
 #	if(randi() % 2 == 1):
 #		dasher = true
@@ -81,7 +84,7 @@ func _on_pathfind_timer_timeout():
 func die():
 	is_dead = true
 	var tween = get_tree().create_tween()
-	tween.tween_property($Temporary2, "modulate", Color.RED, 1)
+	tween.tween_property($Sprite, "modulate", Color.RED, 1)
 	$DeathTimer.start()
 
 
@@ -95,6 +98,9 @@ func _on_attack_cooldown_timeout():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_damage_source"):
 		health -= 1
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sprite, "modulate", Color.DIM_GRAY, .2)
+		tween.tween_property($Sprite, "modulate", nor_modulate, .1)
 #		speed = 30
 
 

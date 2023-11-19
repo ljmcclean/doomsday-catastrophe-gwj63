@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/enemies/ranged_enemy.gd" id="1_rp35f"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_fwgmh"]
-[ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="3_7g4fu"]
+[ext_resource type="Texture2D" uid="uid://c7awts2eeoknr" path="res://assets/art/enemies/ranged.png" id="3_40n4w"]
 [ext_resource type="PackedScene" uid="uid://cd6fa78higv63" path="res://scenes/items/gun.tscn" id="4_bcn4s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytj25"]
-radius = 7.0
+radius = 8.83888
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ontt"]
 radius = 88.0
@@ -25,30 +25,36 @@ script = ExtResource("1_rp35f")
 player_data = ExtResource("2_fwgmh")
 
 [node name="Temporary" type="CollisionShape2D" parent="."]
+scale = Vector2(1.02392, 1.07497)
 shape = SubResource("CircleShape2D_ytj25")
 
-[node name="Temporary2" type="Sprite2D" parent="."]
-texture = ExtResource("3_7g4fu")
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("3_40n4w")
 
 [node name="AttackRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 shape = SubResource("CircleShape2D_8ontt")
 debug_color = Color(0.988235, 0, 0.282353, 0.419608)
 
 [node name="MoveRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoveRadius"]
 shape = SubResource("CircleShape2D_ij0ce")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="StopMoveRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StopMoveRadius"]
 shape = SubResource("CircleShape2D_3hoxy")
 debug_color = Color(0.67451, 0.505882, 0, 0.419608)
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_asqw1")
@@ -56,7 +62,8 @@ shape = SubResource("CircleShape2D_asqw1")
 [node name="AttackCooldown" type="Timer" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("4_bcn4s")]
-scale = Vector2(0.01, 0.01)
+position = Vector2(0, 0)
+scale = Vector2(0.4, 0.4)
 bullet_speed = 180
 spread = 0.2
 

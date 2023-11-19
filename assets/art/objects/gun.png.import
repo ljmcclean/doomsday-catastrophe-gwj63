@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djg488lhgq8im"
-path="res://.godot/imported/Death.png-66db83dd5c41092ffbe285d824a3798a.ctex"
+uid="uid://5tahpw2mchtk"
+path="res://.godot/imported/gun.png-bcbf6b0bddaf2ca7b05e7530636fe658.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/enemies/Death.png"
-dest_files=["res://.godot/imported/Death.png-66db83dd5c41092ffbe285d824a3798a.ctex"]
+source_file="res://assets/art/objects/gun.png"
+dest_files=["res://.godot/imported/gun.png-bcbf6b0bddaf2ca7b05e7530636fe658.ctex"]
 
 [params]
 

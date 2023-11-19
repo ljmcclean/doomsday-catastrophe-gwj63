@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8hyvo1cpeq87"
-path="res://.godot/imported/blue.png-ce127e6670211ca8c54658ca8cc694d4.ctex"
+uid="uid://uu57ekdamvxk"
+path="res://.godot/imported/melee.png-04bf673363939c8435759858f0dc20c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/blue.png"
-dest_files=["res://.godot/imported/blue.png-ce127e6670211ca8c54658ca8cc694d4.ctex"]
+source_file="res://assets/art/enemies/melee.png"
+dest_files=["res://.godot/imported/melee.png-04bf673363939c8435759858f0dc20c0.ctex"]
 
 [params]
 

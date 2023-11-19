@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://vc6r8if4tfdh"]
+
+[ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_v1bvx"]
+[ext_resource type="Script" path="res://scripts/game/opening_scroll.gd" id="2_mhgb0"]
+[ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="3_w5g2l"]
+
+[node name="EndCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v1bvx")
+script = ExtResource("2_mhgb0")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.03, 0.03, 1)
+
+[node name="Title" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 1000)
+layout_mode = 2
+offset_left = -1.0
+offset_top = 200.0
+offset_right = 1924.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 300
+bbcode_enabled = true
+text = "[center]Doomsday CATastrophe"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 83.0
+one_shot = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 3000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1200.0
+offset_bottom = 3120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 35
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]In a world ravaged by a nuclear disaster, one audacious cat has embarked on the harrowing quest to reclaim his territory. With the entire human population obliterated, sentient robots have risen to take their place, and they're on a mission to eradicate all remaining lifeforms. Little do they know, the nuclear catastrophe has bestowed unique abilities upon the animal kingdom.
+Our feline protagonist, armed with a newfound power, can now levitate machinery. After a daring attack on a robotic foe, our fearless cat has purloined its weapon and is wielding it with unrelenting furiosity. Prepare for a tail of epic proportions as this weapon-wielding cat fires its way through anything that dares to stand in its path."
+scroll_active = false
+
+[node name="Black" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0313726, 0.0313726, 0.0313726, 0)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_w5g2l")
+volume_db = -80.0
+bus = &"LevelMusic"
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

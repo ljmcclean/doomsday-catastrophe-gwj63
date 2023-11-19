@@ -54,6 +54,11 @@ func _ready():
 	tween.tween_property($Cat/Camera2D/GameUI/Black, "modulate", Color(0, 0, 0, 0), .4)
 
 
+func _process(_delta):
+	if $Music.playing == false:
+		$Music.play()
+
+
 func generate_level() -> void:
 	var used_coords: Array = [Vector2i(0, 0)]
 	var current_coords := Vector2i(0, 0)
@@ -206,3 +211,7 @@ func _on_exit_body_entered(body):
 func _on_load_timer_timeout():
 	SaveAndLoad.save_data()
 	get_tree().change_scene_to_file("res://scenes/game_scenes/level_generator_backyard.tscn")
+
+
+func _on_music_finished():
+	$Music.play()

@@ -12,10 +12,13 @@ var player: bool = true
 @onready var walking_sound = $WalkingSound
 @onready var anim = $AnimationPlayer
 
+var nor_modulate : Color
+
 signal player_died
 
 
 func _ready():
+	nor_modulate = $Sprite.modulate
 	add_to_group("cat")
 
 
@@ -50,19 +53,22 @@ func move(delta):
 
 
 func aim_gun():
-	$Gun.global_rotation = $Gun.global_position.direction_to(get_global_mouse_position()).angle() + PI
+	$Gun.global_rotation = $Gun.global_position.direction_to(get_global_mouse_position()).angle() + PI/2
 
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		gun.fire_bullet()
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("ui_select"):
 		player_data.health = 100
 
 
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("damage_source"):
 		player_data.health -= 1
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sprite, "modulate", Color.DIM_GRAY, .2)
+		tween.tween_property($Sprite, "modulate", nor_modulate, .1)
 
 
 func die():

@@ -17,8 +17,11 @@ var player_in_attack_radius := false
 
 var is_dead: bool = false
 
+var nor_modulate : Color
+
 
 func _ready():
+	nor_modulate = $Sprite.modulate
 	nav_agent.target_desired_distance = 1
 
 
@@ -36,7 +39,7 @@ func _physics_process(delta):
 			die()
 		
 		if player_in_attack_radius:
-			gun.global_rotation = gun.global_position.direction_to(player_data.player_position).angle() + PI
+			gun.global_rotation = gun.global_position.direction_to(player_data.player_position).angle() + PI/2
 
 
 func _on_attack_radius_body_entered(body):
@@ -76,7 +79,7 @@ func _on_pathfind_timer_timeout():
 func die():
 	is_dead = true
 	var tween = get_tree().create_tween()
-	tween.tween_property($Temporary2, "modulate", Color.RED, 1)
+	tween.tween_property($Sprite, "modulate", Color.RED, 1)
 	$DeathTimer.start()
 
 
@@ -88,6 +91,9 @@ func _on_attack_cooldown_timeout():
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("player_damage_source"):
 		health -= 1
+		var tween = get_tree().create_tween()
+		tween.tween_property($Sprite, "modulate", Color.DIM_GRAY, .2)
+		tween.tween_property($Sprite, "modulate", nor_modulate, .1)
 
 
 func _on_death_timer_timeout():

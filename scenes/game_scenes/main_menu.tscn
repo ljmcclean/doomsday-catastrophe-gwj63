@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://0ydfda14kt0l" path="res://resources/themes/standard_theme.tres" id="1_yhhtq"]
 [ext_resource type="Script" path="res://scripts/game/main_menu.gd" id="2_wqd7t"]
 [ext_resource type="AudioStream" uid="uid://bll2bymsxkc0i" path="res://assets/audio/menu/Button_1.wav" id="3_hj526"]
+[ext_resource type="Texture2D" uid="uid://bsyerbtlhpw7j" path="res://assets/art/ui/title_screen.png" id="3_i4en6"]
 [ext_resource type="Texture2D" uid="uid://b8ue38jv3tjck" path="res://assets/art/ui/play_text.png" id="3_v11ny"]
-[ext_resource type="Texture2D" uid="uid://bsyerbtlhpw7j" path="res://assets/art/title_screen.png" id="3_wx0fc"]
 [ext_resource type="AudioStream" uid="uid://kpwv7nfgtls5" path="res://assets/audio/music/Title_Screen_Loop.wav" id="4_7yohx"]
 
 [node name="MainMenu" type="Control"]
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_wx0fc")
+texture = ExtResource("3_i4en6")
 expand_mode = 3
 stretch_mode = 4
 
@@ -70,3 +70,4 @@ stream = ExtResource("4_7yohx")
 bus = &"LevelMusic"
 
 [connection signal="timeout" from="LoadDelay" to="." method="_on_load_delay_timeout"]
+[connection signal="finished" from="MainMenuMusic" to="." method="_on_main_menu_music_finished"]

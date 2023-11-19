@@ -17,4 +17,12 @@ func _input(event):
 
 
 func _on_load_delay_timeout():
-	get_tree().change_scene_to_file("res://scenes/game_scenes/lobby.tscn")
+	if SaveAndLoad.first_run:
+		SaveAndLoad.first_run = false
+		get_tree().change_scene_to_file("res://scenes/game_scenes/opening_scroll.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/game_scenes/lobby.tscn")
+
+
+func _on_main_menu_music_finished():
+	$MainMenuMusic.play()

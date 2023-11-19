@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5rmcnkadqxyw"]
+[gd_scene load_steps=11 format=3 uid="uid://b5rmcnkadqxyw"]
 
 [ext_resource type="Script" path="res://scripts/enemies/melee_enemy.gd" id="1_ego7q"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_ovvwk"]
-[ext_resource type="Texture2D" uid="uid://l5q2maxmopaq" path="res://assets/art/skeleton.png" id="3_o3csr"]
-[ext_resource type="Texture2D" uid="uid://b0366fyv0pbll" path="res://assets/art/objects/fountain.png" id="4_hb74e"]
+[ext_resource type="Texture2D" uid="uid://uu57ekdamvxk" path="res://assets/art/enemies/melee.png" id="3_fxgr4"]
+[ext_resource type="Texture2D" uid="uid://guv2rii7m33x" path="res://assets/art/enemies/me_atta.png" id="4_aa2ib"]
+[ext_resource type="PackedScene" uid="uid://crlq4wn5ojjwr" path="res://scenes/enemies/eye.tscn" id="5_anfes"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ytj25"]
-radius = 7.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ontt"]
 radius = 30.4138
@@ -27,22 +28,26 @@ player_data = ExtResource("2_ovvwk")
 [node name="Temporary" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ytj25")
 
-[node name="Temporary2" type="Sprite2D" parent="."]
-texture = ExtResource("3_o3csr")
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_fxgr4")
 
 [node name="AttackRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRadius"]
 shape = SubResource("CircleShape2D_8ontt")
 debug_color = Color(0.988235, 0, 0.282353, 0.419608)
 
 [node name="MoveRadius" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MoveRadius"]
 shape = SubResource("CircleShape2D_ij0ce")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_asqw1")
@@ -66,8 +71,10 @@ shape = SubResource("CircleShape2D_ef8d3")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackArea"]
 modulate = Color(1, 0, 0, 0.423529)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_hb74e")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_aa2ib")
+
+[node name="Eye" parent="." instance=ExtResource("5_anfes")]
 
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_attack_radius_body_entered"]
 [connection signal="body_exited" from="AttackRadius" to="." method="_on_attack_radius_body_exited"]

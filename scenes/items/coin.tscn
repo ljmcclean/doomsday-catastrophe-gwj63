@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://3ggorad8q6ev"]
 
-[ext_resource type="Texture2D" uid="uid://4rpwn7105n3a" path="res://assets/art/Gold_1.png" id="1_16mg6"]
 [ext_resource type="Script" path="res://scripts/items/coin.gd" id="1_wk6hl"]
 [ext_resource type="Resource" uid="uid://c6cdibbeske76" path="res://resources/data/player_data.tres" id="2_tcs3c"]
+[ext_resource type="Texture2D" uid="uid://c8eecpo7xqgfq" path="res://assets/art/objects/coin.png" id="3_mp43r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dires"]
 radius = 26.6667
@@ -14,8 +14,8 @@ player_data = ExtResource("2_tcs3c")
 
 [node name="CoinSprite" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 0)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_16mg6")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_mp43r")
 
 [node name="Area2D" type="Area2D" parent="."]
 
